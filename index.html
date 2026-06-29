@@ -53,7 +53,7 @@
 .hacker-mode .tag-cyan{background:rgba(0,255,65,.08);color:#00FF41;border-color:rgba(0,255,65,.2)}
 .hacker-mode .tag-purple{background:rgba(0,204,51,.08);color:#00CC33;border-color:rgba(0,204,51,.2)}
 .hacker-mode #scroll-progress{background:linear-gradient(90deg,#00FF41,#00CC33,#00FF41)}
-.hacker-mode .side-dot.active{background:#00FF41;border-color:#00FF41;box-shadow:0 0 14px rgba(0,255,65,.8)}
+
 .hacker-mode .currently-learning{background:rgba(0,255,65,.04);border-color:rgba(0,255,65,.15)}
 .hacker-mode .exp-dot{border-color:#00FF41;box-shadow:0 0 16px rgba(0,255,65,.6)}
 .hacker-mode .hero-badge{box-shadow:0 0 20px rgba(0,255,65,.12);border-color:rgba(0,255,65,.3)}
@@ -344,15 +344,7 @@ section{padding:6rem 5%}
 .contact-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.1rem}
 .contact-val{font-size:.8rem}
 
-/* SIDE NAV DOTS */
-#side-nav{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:.75rem;opacity:0;transition:opacity .4s}
-#side-nav.visible{opacity:1}
-.side-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--muted);background:transparent;transition:all .3s;position:relative;display:block}
-.side-dot::after{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:.62rem;color:var(--cyan);white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;background:var(--card);padding:.15rem .5rem;border-radius:3px;border:1px solid var(--border)}
-.side-dot:hover::after,.side-dot.active::after{opacity:1}
-.side-dot.active{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 8px rgba(0,229,255,.5)}
-.side-dot:hover{border-color:var(--cyan)}
-@media(max-width:1100px){#side-nav{display:none}}
+
 
 /* COMMAND PALETTE */
 #cmd-overlay{position:fixed;inset:0;z-index:500;background:rgba(5,8,15,.85);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding-top:12vh}
@@ -458,8 +450,7 @@ footer{background:var(--card2);border-top:1px solid var(--border);padding:2rem 5
 .section-title .accent{text-shadow:0 0 25px rgba(0,229,255,.25)}
 
 /* SECTION LABEL — more visible */
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
-.section-label.visible{opacity:1;transform:translateY(0)}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .section-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--cyan);opacity:.6}
 
 /* CARDS — visible resting border, not just on hover */
@@ -576,8 +567,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .tag-purple:hover{background:rgba(124,58,237,.18);border-color:rgba(124,58,237,.4)}
 .tag-green:hover{background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.4)}
 
-/* SIDE DOT GLOW */
-.side-dot.active{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.7)}
+
 
 /* EXP DOT GLOW */
 .exp-dot{box-shadow:0 0 16px rgba(0,229,255,.5)}
@@ -645,19 +635,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <div id="copy-toast">Copied ✓</div>
 <div id="key-hint">Press <kbd>/</kbd> terminal &nbsp;·&nbsp; <kbd>⌘K</kbd> palette &nbsp;·&nbsp; <kbd>H</kbd> hack mode</div>
 
-<!-- SIDE NAV DOTS -->
-<nav id="side-nav">
-  <a class="side-dot" href="#hero" data-label="Home"></a>
-  <a class="side-dot" href="#whatido" data-label="What I Do"></a>
-  <a class="side-dot" href="#terminal-section" data-label="Console"></a>
-  <a class="side-dot" href="#skills" data-label="Skills"></a>
-  <a class="side-dot" href="#stats" data-label="Stats"></a>
-  <a class="side-dot" href="#experience" data-label="Experience"></a>
-  <a class="side-dot" href="#projects" data-label="Projects"></a>
-  <a class="side-dot" href="#certifications" data-label="Certs"></a>
-  <a class="side-dot" href="#education" data-label="Education"></a>
-  <a class="side-dot" href="#contact" data-label="Contact"></a>
-</nav>
+
 
 <!-- COMMAND PALETTE -->
 <div id="cmd-overlay">
@@ -1123,7 +1101,7 @@ setTimeout(type,900);
 
 /* SCROLL REVEAL */
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
-document.querySelectorAll('.reveal, .section-label').forEach(r=>obs.observe(r));
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
 /* SKILL BARS */
 const barObs=new IntersectionObserver(entries=>{
@@ -1669,20 +1647,7 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
   document.querySelectorAll('.section-title').forEach(t=>obs.observe(t));
 })();
 
-/* SIDE NAV DOTS — active state */
-const sideDots = document.querySelectorAll('.side-dot');
-const sideNav = document.getElementById('side-nav');
-function updateSideDots() {
-  if (!sideNav) return;
-  const scrollY = window.scrollY + window.innerHeight * 0.4;
-  sideNav.classList.toggle('visible', window.scrollY > 200);
-  let active = null;
-  sideDots.forEach(dot => {
-    const target = document.querySelector(dot.getAttribute('href'));
-    if (target && target.offsetTop <= scrollY) active = dot;
-  });
-  sideDots.forEach(d => d.classList.toggle('active', d === active));
-}
+
 
 /* CURSOR TRAIL */
 (function(){
@@ -1741,7 +1706,7 @@ function updateSideDots() {
     accent.style.textShadow = '';
   });
 })();
-document.addEventListener('scroll', updateSideDots); updateSideDots();
+
 
 /* AUTO-TYPE whoami when terminal scrolls into view */
 (function(){
