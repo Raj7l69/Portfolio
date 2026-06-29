@@ -458,7 +458,8 @@ footer{background:var(--card2);border-top:1px solid var(--border);padding:2rem 5
 .section-title .accent{text-shadow:0 0 25px rgba(0,229,255,.25)}
 
 /* SECTION LABEL — more visible */
-.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.section-label{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.18em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.section-label.visible{opacity:1;transform:translateY(0)}
 .section-label::before{content:'';display:inline-block;width:18px;height:1px;background:var(--cyan);opacity:.6}
 
 /* CARDS — visible resting border, not just on hover */
@@ -1122,7 +1123,7 @@ setTimeout(type,900);
 
 /* SCROLL REVEAL */
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+document.querySelectorAll('.reveal, .section-label').forEach(r=>obs.observe(r));
 
 /* SKILL BARS */
 const barObs=new IntersectionObserver(entries=>{
