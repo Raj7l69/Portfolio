@@ -910,7 +910,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <span class="hero-photo-dot" style="background:#27C93F"></span>
       <span class="hero-photo-path">~/profile.jpg</span>
     </div>
-    <img src="assets/profile.jpg" alt="Rajendra Singh" class="hero-photo" onload="this.classList.add('loaded')" onerror="this.closest('.hero-photo-frame').classList.add('photo-fallback')">
+    <img data-src="assets/profile.jpg" alt="Rajendra Singh" class="hero-photo lazy-img">
     <div class="hero-photo-placeholder">📷<span>Profile photo<br>coming soon</span></div>
   </div>
   </div>
@@ -925,7 +925,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="ctf-proof-grid">
     <div class="ctf-proof-card">
       <div class="ctf-proof-header"><span class="ctf-proof-icon">⚔️</span><span>TryHackMe — Ra.oneX</span></div>
-      <img src="assets/thm-profile.png" alt="TryHackMe Profile" class="ctf-proof-img" onload="this.classList.add('loaded')" onerror="this.closest('.ctf-proof-card').classList.add('photo-fallback')">
+      <img data-src="assets/thm-profile.png" alt="TryHackMe Profile" class="ctf-proof-img lazy-img">
       <div class="ctf-proof-placeholder">🖼️<span>THM profile screenshot<br>coming soon</span></div>
     </div>
     <div class="ctf-proof-card">
