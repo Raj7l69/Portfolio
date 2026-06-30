@@ -178,6 +178,38 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero-glow-3{position:absolute;bottom:30%;left:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 65%);pointer-events:none;z-index:0}
 .hero-content{position:relative;z-index:1;max-width:900px}
 
+/* HERO TWO-COLUMN LAYOUT */
+.hero-flex{position:relative;z-index:1;display:flex;align-items:flex-start;gap:3rem;max-width:1200px}
+.hero-flex .hero-content{flex:1;min-width:0}
+.hero-photo-frame{width:260px;flex-shrink:0;background:#030610;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 0 50px rgba(0,229,255,.06),0 20px 50px rgba(0,0,0,.5);margin-top:.5rem}
+.hero-photo-bar{display:flex;align-items:center;gap:.4rem;padding:.55rem .8rem;background:var(--card);border-bottom:1px solid var(--border)}
+.hero-photo-dot{width:8px;height:8px;border-radius:50%}
+.hero-photo-path{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-left:.3rem}
+.hero-photo{width:100%;height:280px;object-fit:cover;display:none}
+.hero-photo.loaded{display:block}
+.hero-photo-placeholder{width:100%;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;font-size:2.2rem;color:var(--muted);background:linear-gradient(135deg,rgba(0,229,255,.03),rgba(124,58,237,.03))}
+.hero-photo-placeholder span{font-family:var(--font-mono);font-size:.65rem;text-align:center;letter-spacing:.04em;line-height:1.6}
+.hero-photo-frame.photo-fallback .hero-photo{display:none}
+.hero-photo-frame:not(.photo-fallback) .hero-photo-placeholder{display:none}
+.hero-photo-frame.photo-fallback .hero-photo-placeholder{display:flex}
+@media(max-width:1000px){.hero-flex{flex-direction:column}.hero-photo-frame{width:100%;max-width:280px;margin:1.5rem auto 0}}
+
+/* CTF PROOF SECTION */
+.ctf-proof-section{background:var(--card2)}
+.ctf-proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.ctf-proof-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s}
+.ctf-proof-card:hover{border-color:rgba(0,229,255,.35);box-shadow:0 0 24px rgba(0,229,255,.08)}
+.ctf-proof-header{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;font-family:var(--font-mono);font-size:.78rem;color:var(--text);border-bottom:1px solid var(--border)}
+.ctf-proof-icon{font-size:1.1rem}
+.ctf-proof-icon.htb-green{color:#9FEF00}
+.ctf-proof-img{width:100%;display:none;cursor:zoom-in}
+.ctf-proof-img.loaded{display:block}
+.ctf-proof-placeholder{height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;font-size:1.8rem;color:var(--muted)}
+.ctf-proof-placeholder span{font-family:var(--font-mono);font-size:.65rem;text-align:center;line-height:1.6}
+.ctf-proof-card.photo-fallback .ctf-proof-img{display:none}
+.ctf-proof-card:not(.photo-fallback) .ctf-proof-placeholder{display:none}
+.ctf-proof-card.photo-fallback .ctf-proof-placeholder{display:flex}
+
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(0,229,255,.25);padding:.3rem .9rem;border-radius:100px;margin-bottom:1.6rem;letter-spacing:.1em;text-transform:uppercase}
 .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.5s ease infinite}
 
@@ -335,9 +367,29 @@ section{padding:6rem 5%}
 .project-link:hover{background:var(--cyan-dim);border-color:var(--cyan)}
 
 /* CERTIFICATIONS */
+/* WRITEUPS */
+#writeups{background:var(--card2)}
+.writeups-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.writeup-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;transition:all .3s}
+.writeup-card.coming-soon{opacity:.85}
+.writeup-card:hover{border-color:rgba(0,229,255,.35);transform:translateY(-4px);box-shadow:0 0 24px rgba(0,229,255,.08),0 12px 32px rgba(0,0,0,.3)}
+.writeup-icon{font-size:1.6rem;display:block;margin-bottom:1rem}
+.writeup-title{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:.6rem;color:var(--text)}
+.writeup-desc{font-size:.82rem;color:#94A3B8;line-height:1.6;margin-bottom:1.2rem}
+.writeup-status{display:inline-block;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-light);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);padding:.25rem .7rem;border-radius:100px}
+
 #certifications{background:var(--bg)}
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
 .cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;display:flex;gap:1.1rem;align-items:flex-start;transition:all .25s}
+.cert-view-btn,.lor-clickable{margin-top:.6rem;font-family:var(--font-mono);font-size:.65rem;color:var(--cyan);background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);padding:.3rem .7rem;border-radius:5px;cursor:pointer;transition:all .2s}
+.cert-view-btn:hover{background:rgba(0,229,255,.12);border-color:rgba(0,229,255,.4)}
+.lor-clickable{cursor:pointer}
+
+/* IMAGE LIGHTBOX MODAL */
+#img-lightbox{position:fixed;inset:0;z-index:700;background:rgba(3,7,18,.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out}
+#img-lightbox.open{display:flex}
+#img-lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;border:1px solid var(--border);box-shadow:0 0 60px rgba(0,229,255,.1)}
+#img-lightbox-close{position:absolute;top:1.5rem;right:2rem;color:var(--cyan);font-family:var(--font-mono);font-size:1.5rem;background:none;border:none;cursor:pointer}
 .cert-card:hover{border-color:rgba(124,58,237,.4);transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.06)}
 .cert-icon{width:44px;height:44px;border-radius:9px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.25);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
 .cert-icon.cyan-icon{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.22)}
@@ -693,6 +745,30 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .cv-modal-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
 .cv-modal-links{display:flex;gap:.7rem;margin-top:1.4rem}
 .light-mode .cv-modal-section p,.light-mode .cv-modal-section li{color:#475569}
+/* LAZY-LOAD IMAGE SKELETON — apply class="lazy-img" to future <img> tags */
+.lazy-img{background:linear-gradient(110deg,var(--card) 8%,var(--card2) 18%,var(--card) 33%);background-size:200% 100%;animation:skeletonShine 1.5s linear infinite;opacity:0;transition:opacity .4s;border-radius:8px}
+.lazy-img.loaded{opacity:1;animation:none;background:none}
+@keyframes skeletonShine{to{background-position-x:-200%}}
+
+/* GENERIC CONTENT SKELETON — for any element with class="skeleton" while data loads */
+.skeleton{position:relative;overflow:hidden;background:var(--card2);border-radius:6px;color:transparent!important}
+.skeleton::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,229,255,.08),transparent);animation:skeletonSweep 1.4s ease-in-out infinite}
+@keyframes skeletonSweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* PRINT STYLES */
+@media print{
+  body{background:#fff!important;color:#111!important}
+  #loader,#cursor-dot,#cursor-ring,#scroll-progress,#back-top,#copy-toast,#key-hint,nav,.mobile-menu,#side-nav,#cv-btn,#cmd-overlay,#konami-toast,.hacker-toggle,.hamburger,.terminal-window,.terminal-hint,#matrix-canvas,#particles-canvas,.hero-noise,.hero-grid-bg,.hero-glow,.hero-glow-2,.hero-glow-3,#spotlight,.currently-learning,.section-divider,.btn-outline,footer .footer-links,.cv-modal-overlay,.hero-terminal-line,.writeup-status{display:none!important}
+  *{box-shadow:none!important;text-shadow:none!important;animation:none!important;transition:none!important}
+  section{padding:1.2rem 0!important;page-break-inside:avoid}
+  .hero-name,.hero-name .accent{color:#000!important;-webkit-text-fill-color:#000!important}
+  .section-title,.section-title .accent{color:#111!important}
+  .whatido-card,.skill-card,.project-card,.cert-card,.exp-card,.writeup-card,.ach-item{background:#fff!important;border:1px solid #ccc!important;break-inside:avoid}
+  .tag{background:#f0f0f0!important;color:#333!important;border:1px solid #ddd!important}
+  a{color:#0066cc!important;text-decoration:underline!important}
+  .hero-badge,.status-pills,.availability-banner{display:none!important}
+  #hero{min-height:auto!important;padding:1rem 0!important}
+}
 </style>
 </head>
 <body>
@@ -728,6 +804,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="k-sub">↑↑↓↓←→←→BA — You found the easter egg.<br>Hire this guy already.</div>
 </div>
 
+<!-- IMAGE LIGHTBOX -->
+<div id="img-lightbox">
+  <button id="img-lightbox-close" aria-label="Close">✕</button>
+  <img id="img-lightbox-img" src="" alt="Document preview">
+</div>
+
 <!-- PROJECT CASE STUDY MODAL -->
 <div class="cv-modal-overlay" id="caseModal">
   <div class="cv-modal" id="caseModalBody">
@@ -742,6 +824,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <a href="#skills" class="mobile-nav-link">Skills</a>
   <a href="#experience" class="mobile-nav-link">Experience</a>
   <a href="#projects" class="mobile-nav-link">Projects</a>
+  <a href="#writeups" class="mobile-nav-link">Writeups</a>
   <a href="#certifications" class="mobile-nav-link">Certs</a>
   <a href="#education" class="mobile-nav-link">Education</a>
   <a href="#contact" class="mobile-nav-link">Contact</a>
@@ -766,6 +849,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#writeups">Writeups</a></li>
       <li><a href="#certifications">Certs</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -787,6 +871,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="hero-glow" id="heroGlow"></div>
   <div class="hero-glow-2"></div>
   <div class="hero-glow-3"></div>
+  <div class="hero-flex">
   <div class="hero-content">
     <div class="hero-badge"><span class="hero-badge-dot"></span>Open to Internships · Freelance · Collaboration</div>
     <div class="hero-terminal-line">
@@ -816,6 +901,37 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div class="status-pill"><span class="pill-dot cyan"></span><span class="pill-label">THM:</span><span class="pill-val">Top 4% Global</span></div>
       <div class="status-pill"><span class="pill-dot" style="background:#9FEF00"></span><span class="pill-label">HTB:</span><span class="pill-val">Active</span></div>
       <div class="status-pill"><span class="pill-dot" style="background:#A78BFA;animation:pulse 1s infinite"></span><span class="pill-label">Hacking for:</span><span class="pill-val" id="days-counter">...</span></div>
+    </div>
+  </div>
+  <div class="hero-photo-frame">
+    <div class="hero-photo-bar">
+      <span class="hero-photo-dot" style="background:#FF5F56"></span>
+      <span class="hero-photo-dot" style="background:#FFBD2E"></span>
+      <span class="hero-photo-dot" style="background:#27C93F"></span>
+      <span class="hero-photo-path">~/profile.jpg</span>
+    </div>
+    <img data-src="assets/profile.jpg" alt="Rajendra Singh" class="hero-photo lazy-img">
+    <div class="hero-photo-placeholder">📷<span>Profile photo<br>coming soon</span></div>
+  </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTF PROOF STRIP — TryHackMe / HTB profile screenshots -->
+<section id="ctf-proof" class="ctf-proof-section">
+  <div class="section-label">00 / Proof</div>
+  <h2 class="section-title">Platform <span class="accent">Profiles</span></h2>
+  <div class="ctf-proof-grid">
+    <div class="ctf-proof-card">
+      <div class="ctf-proof-header"><span class="ctf-proof-icon">⚔️</span><span>TryHackMe — Ra.oneX</span></div>
+      <img data-src="assets/thm-profile.png" alt="TryHackMe Profile" class="ctf-proof-img lazy-img">
+      <div class="ctf-proof-placeholder">🖼️<span>THM profile screenshot<br>coming soon</span></div>
+    </div>
+    <div class="ctf-proof-card">
+      <div class="ctf-proof-header"><span class="ctf-proof-icon htb-green">🟩</span><span>HackTheBox</span></div>
+      <img data-src="assets/htb-profile.jpg" alt="HackTheBox Profile" class="ctf-proof-img lazy-img">
+      <div class="ctf-proof-placeholder">🖼️<span>HTB profile screenshot<br>coming soon</span></div>
     </div>
   </div>
 </section>
@@ -942,7 +1058,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="exp-company">Unified Mentor &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Web Application Security</div>
         <div class="exp-meta-row">
           <div class="exp-tools"><span class="tag tag-cyan">Burp Suite</span><span class="tag tag-cyan">SQLMap</span><span class="tag tag-cyan">Gobuster</span><span class="tag tag-gray">OWASP Top 10</span></div>
-          <div class="lor-badge"><span class="lor-dot"></span>Letter of Recommendation</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="lor-badge lor-clickable" data-lor="assets/lor-unified-mentor.png"><span class="lor-dot"></span>🔍 LOR — Unified Mentor</button>
+            <button class="lor-badge lor-clickable" data-lor="assets/cert-unified-mentor-completion.png"><span class="lor-dot"></span>🔍 Completion Cert — Unified Mentor</button>
+          </div>
         </div>
         <ul class="exp-bullets">
           <li>Performed web application vulnerability assessment and basic penetration testing.</li>
@@ -960,7 +1079,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="exp-company">Amroha Police &nbsp;·&nbsp; On-site &nbsp;·&nbsp; Govt. Cyber Security Program (APCSIP)</div>
         <div class="exp-meta-row">
           <div class="exp-tools"><span class="tag tag-purple">Dark Web Investigation</span><span class="tag tag-purple">Digital Forensics</span><span class="tag tag-gray">U.P. Police</span></div>
-          <div class="lor-badge"><span class="lor-dot"></span>ID: APCSIP/2026/753</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="lor-badge lor-clickable" data-lor="assets/lor-amroha-offer.jpg"><span class="lor-dot"></span>🔍 Offer Letter — Amroha Police</button>
+            <button class="lor-badge lor-clickable" data-lor="assets/cert-apcsip-completion.png"><span class="lor-dot"></span>🔍 Completion Cert — Amroha Police</button>
+          </div>
         </div>
         <ul class="exp-bullets">
           <li>Participated in a government-run cybersecurity program under the Superintendent of Police, Amroha (U.P.).</li>
@@ -1014,13 +1136,41 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 <div class="section-divider"></div>
 
+<!-- WRITEUPS -->
+<section id="writeups">
+  <div class="section-label">04.5 / Notes</div>
+  <h2 class="section-title">CTF <span class="accent">Writeups</span></h2>
+  <div class="writeups-wrap reveal">
+    <div class="writeup-card coming-soon">
+      <span class="writeup-icon">📝</span>
+      <div class="writeup-title">Documenting Active Solves</div>
+      <div class="writeup-desc">Detailed writeups of TryHackMe rooms and HackTheBox machines — methodology, enumeration, exploitation, and lessons learned. Publishing soon.</div>
+      <span class="writeup-status">Coming Soon</span>
+    </div>
+    <div class="writeup-card coming-soon">
+      <span class="writeup-icon">🔬</span>
+      <div class="writeup-title">VAPT Case Notes</div>
+      <div class="writeup-desc">Breakdown of vulnerability classes encountered during practice and internship engagements — root cause, impact, and remediation.</div>
+      <span class="writeup-status">Coming Soon</span>
+    </div>
+    <div class="writeup-card coming-soon">
+      <span class="writeup-icon">🏴</span>
+      <div class="writeup-title">CTF Methodology</div>
+      <div class="writeup-desc">Personal recon-to-root checklists and tool workflows refined across 90+ TryHackMe rooms and ongoing HTB practice.</div>
+      <span class="writeup-status">Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="section-label">05 / Credentials</div>
   <h2 class="section-title">Certifications & <span class="accent">Recognition</span></h2>
   <div class="certs-grid">
-    <div class="cert-card reveal"><div class="cert-icon">🤖</div><div><div class="cert-name">Certified LLM Security Professional</div><div class="cert-issuer">Red Team Leaders · CLLMSP</div><div class="cert-year">2026</div></div></div>
-    <div class="cert-card reveal"><div class="cert-icon cyan-icon">🛡️</div><div><div class="cert-name">Certified Online Fraud Prevention Specialist</div><div class="cert-issuer">Hack & Fix Academy · COFPS</div><div class="cert-year">2026 · ID: 4096-2928-4898-1370</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🤖</div><div><div class="cert-name">Certified LLM Security Professional</div><div class="cert-issuer">Red Team Leaders · CLLMSP</div><div class="cert-year">2026</div><button class="cert-view-btn" data-cert="assets/cert-cllmsp.png">🔍 View Certificate</button></div></div>
+    <div class="cert-card reveal"><div class="cert-icon cyan-icon">🛡️</div><div><div class="cert-name">Certified Online Fraud Prevention Specialist</div><div class="cert-issuer">Hack & Fix Academy · COFPS</div><div class="cert-year">2026 · ID: 4096-2928-4898-1370</div><button class="cert-view-btn" data-cert="assets/cert-cofps.jpg">🔍 View Certificate</button></div></div>
     <div class="cert-card thm-card reveal"><div class="cert-icon cyan-icon">⚔️</div><div><div class="cert-name">TryHackMe — Top 4% Global</div><div class="cert-issuer">Pre Security · Cyber 101 · Jr Penetration Tester</div><div class="cert-year">Ongoing</div><a href="https://tryhackme.com/p/Ra.oneX" target="_blank" rel="noopener" class="cert-profile-link">↗ tryhackme.com/p/Ra.oneX</a></div></div>
   </div>
 
@@ -1690,23 +1840,35 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
   });
 })();
 
-/* TYPING SOUND on terminal input */
+/* TYPING SOUND on terminal input — works on mobile too */
 (function(){
-  const ctx=new (window.AudioContext||window.webkitAudioContext)();
-  function beep(){
-    const o=ctx.createOscillator();
-    const g=ctx.createGain();
-    o.connect(g);g.connect(ctx.destination);
-    o.frequency.value=800+Math.random()*400;
-    o.type='square';
-    g.gain.setValueAtTime(.04,ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.06);
-    o.start();o.stop(ctx.currentTime+.06);
+  let ctx = null;
+  function getCtx(){
+    if(!ctx) ctx = new (window.AudioContext||window.webkitAudioContext)();
+    if(ctx.state === 'suspended') ctx.resume();
+    return ctx;
   }
-  const ti=document.getElementById('termInput');
-  if(ti) ti.addEventListener('keydown',e=>{
-    if(e.key.length===1||e.key==='Backspace') beep();
+  function beep(){
+    try {
+      const c = getCtx();
+      const o = c.createOscillator();
+      const g = c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.frequency.value = 800 + Math.random()*400;
+      o.type = 'square';
+      g.gain.setValueAtTime(.04, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(.001, c.currentTime+.06);
+      o.start(); o.stop(c.currentTime+.06);
+    } catch(e){}
+  }
+  const ti = document.getElementById('termInput');
+  if(!ti) return;
+  ti.addEventListener('touchstart', () => getCtx(), {once:true, passive:true});
+  ti.addEventListener('focus', () => getCtx(), {once:true});
+  ti.addEventListener('keydown', e => {
+    if(e.key.length===1 || e.key==='Backspace') beep();
   });
+  ti.addEventListener('input', () => beep());
 })();
 
 /* SECTION ENTER GLOW — subtle cyan flash on section titles */
@@ -1811,7 +1973,7 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
 
 /* NAV ACTIVE LINK on scroll */
 (function(){
-  const sections = ['hero','whatido','terminal-section','skills','experience','projects','certifications','education','contact'];
+  const sections = ['hero','whatido','terminal-section','skills','experience','projects','writeups','certifications','education','contact'];
   const links = document.querySelectorAll('.nav-links a');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -2084,6 +2246,53 @@ document.addEventListener('visibilitychange', () => {
   closeBtn.addEventListener('click', closeCase);
   overlay.addEventListener('click', e => { if(e.target === overlay) closeCase(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && overlay.classList.contains('open')) closeCase(); });
+})();
+
+/* LAZY-LOAD IMAGES — for any future <img data-src="..." class="lazy-img"> */
+(function(){
+  const imgs = document.querySelectorAll('img[data-src]');
+  if(!imgs.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const img = entry.target;
+        img.addEventListener('load', () => img.classList.add('loaded'));
+        img.addEventListener('error', () => {
+          const wrap = img.closest('.hero-photo-frame,.ctf-proof-card');
+          if(wrap) wrap.classList.add('photo-fallback');
+        });
+        img.src = img.dataset.src;
+        obs.unobserve(img);
+      }
+    });
+  }, {rootMargin: '150px'});
+  imgs.forEach(img => obs.observe(img));
+})();
+
+/* IMAGE LIGHTBOX — certificates, LOR, CTF screenshots */
+(function(){
+  const lb = document.getElementById('img-lightbox');
+  const lbImg = document.getElementById('img-lightbox-img');
+  const lbClose = document.getElementById('img-lightbox-close');
+  if(!lb || !lbImg) return;
+  function openLightbox(src){
+    lbImg.src = src;
+    lb.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }
+  function closeLightbox(){
+    lb.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+  document.querySelectorAll('[data-cert],[data-lor]').forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(btn.dataset.cert || btn.dataset.lor));
+  });
+  document.querySelectorAll('.ctf-proof-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+  });
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && lb.classList.contains('open')) closeLightbox(); });
 })();
 
 </script>
