@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#00E5FF">
 <meta name="keywords" content="VAPT, Penetration Testing, Offensive Security, Cybersecurity, Bug Bounty, TryHackMe, HackTheBox">
 <meta name="author" content="Rajendra Singh">
+<link rel="canonical" href="https://raj7l69.github.io/Portfolio/">
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -16,15 +17,19 @@
 <meta property="og:title" content="Rajendra Singh — Offensive Security & VAPT">
 <meta property="og:description" content="Cybersecurity student · VAPT · Penetration Testing · TryHackMe Top 4% Global · Open to Internships">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://rajendra-singh.dev">
-<meta property="og:image" content="assets/og-banner.png">
+<meta property="og:site_name" content="Rajendra Singh — Portfolio">
+<meta property="og:url" content="https://raj7l69.github.io/Portfolio/">
+<meta property="og:image" content="https://raj7l69.github.io/Portfolio/assets/og-banner.png">
+<meta property="og:image:secure_url" content="https://raj7l69.github.io/Portfolio/assets/og-banner.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rajendra Singh — Offensive Security & VAPT portfolio banner">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rajendra Singh — Offensive Security">
 <meta name="twitter:description" content="VAPT · Pentesting · TryHackMe Top 4% · Open to Internships">
-<meta name="twitter:image" content="assets/og-banner.png">
+<meta name="twitter:image" content="https://raj7l69.github.io/Portfolio/assets/og-banner.png">
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -56,18 +61,51 @@
   --glow-purple:0 0 16px rgba(109,40,217,.16);
 }
 .light-mode body{background:var(--bg)}
-.light-mode .hero-noise,.light-mode #matrix-canvas,.light-mode #particles-canvas{opacity:.18}
-.light-mode .hero-grid-bg{opacity:.4}
+.light-mode .hero-noise,.light-mode #matrix-canvas,.light-mode #particles-canvas{opacity:.1}
+.light-mode .hero-grid-bg{opacity:.35}
 .light-mode .hero-name,.light-mode .section-title .accent,.light-mode .ach-num{text-shadow:none}
 .light-mode nav{background:rgba(244,247,251,.88);border-bottom-color:rgba(8,145,178,.15)}
 .light-mode nav.scrolled{background:rgba(244,247,251,.97);box-shadow:0 1px 0 var(--border),0 4px 24px rgba(15,23,42,.08)}
-.light-mode .project-card,.light-mode .skill-card,.light-mode .whatido-card,.light-mode .exp-card,.light-mode .cert-card{box-shadow:0 2px 12px rgba(15,23,42,.05)}
+.light-mode .project-card,.light-mode .skill-card,.light-mode .whatido-card,.light-mode .exp-card,.light-mode .cert-card{box-shadow:0 2px 14px rgba(15,23,42,.06)}
+.light-mode .project-card:hover,.light-mode .skill-card:hover,.light-mode .whatido-card:hover,.light-mode .exp-card:hover,.light-mode .cert-card:hover{box-shadow:0 10px 32px rgba(15,23,42,.1)}
 .light-mode .btn-primary{color:#fff}
 .light-mode .terminal-window,.light-mode .terminal-body{background:#0B1220;color:#CBD5E1}
 .light-mode .mobile-menu{background:rgba(244,247,251,.98)}
 .light-mode #loader{background:var(--bg)}
 .light-mode .theme-toggle{color:#0F172A}
 .light-mode .hero-badge,.light-mode .currently-learning,.light-mode .status-pill{box-shadow:0 1px 4px rgba(15,23,42,.04)}
+
+/* LIGHT MODE — text contrast fixes (muted body copy was too washed-out on white) */
+.light-mode .hero-desc,.light-mode .whatido-desc,.light-mode .term-output,
+.light-mode .skill-bar-label,.light-mode .exp-bullets li,.light-mode .project-desc,
+.light-mode .project-highlights li,.light-mode .contact-desc,.light-mode .cmd-item,
+.light-mode .cv-modal-section p,.light-mode .cv-modal-section li,.light-mode .cv-challenge-a{color:#475569}
+.light-mode .tag-gray{background:rgba(71,85,105,.1);color:#475569;border-color:rgba(71,85,105,.2)}
+.light-mode .terminal-body{color:#CBD5E1}
+
+/* LIGHT MODE — softer ambient glows (cyberpunk glow looks heavy on white) */
+.light-mode .hero-glow{background:radial-gradient(circle,rgba(8,145,178,.07) 0%,rgba(8,145,178,.025) 35%,transparent 65%)}
+.light-mode .hero-glow-2{background:radial-gradient(circle,rgba(109,40,217,.08) 0%,rgba(109,40,217,.025) 40%,transparent 65%)}
+.light-mode .hero-glow-3{background:radial-gradient(circle,rgba(8,145,178,.035) 0%,transparent 65%)}
+.light-mode .hero-name .accent::after{display:none}
+
+/* LIGHT MODE — card surfaces & borders */
+.light-mode .ach-grid,.light-mode .stats-row{background:var(--border)}
+.light-mode .ach-item,.light-mode .stat-item{background:#fff}
+.light-mode .ach-item:hover,.light-mode .stat-item:hover{background:#F8FAFC}
+.light-mode .side-dot::after{background:#fff;color:#0F172A;box-shadow:0 2px 10px rgba(15,23,42,.12)}
+.light-mode .cv-modal{box-shadow:0 30px 80px rgba(15,23,42,.25)}
+.light-mode .cv-modal-overlay{background:rgba(15,23,42,.45)}
+.light-mode .cv-metric{background:#F8FAFC}
+.light-mode #cmd-overlay{background:rgba(15,23,42,.45)}
+.light-mode #cmd-overlay .cmd-box{background:#fff;box-shadow:0 30px 80px rgba(15,23,42,.2)}
+.light-mode .cmd-item:hover,.light-mode .cmd-item.active{background:rgba(8,145,178,.06)}
+
+/* LIGHT MODE — footer & misc */
+.light-mode footer{background:var(--card2)}
+.light-mode ::-webkit-scrollbar-thumb{background:var(--cyan)}
+.light-mode .konami-toast,.light-mode #konami-toast{background:#fff}
+.light-mode body::before{opacity:.015}
 /* HACKER MODE EXTRAS */
 .hacker-mode body{font-family:var(--font-mono)}
 .hacker-mode .hero-name{text-shadow:0 0 30px rgba(0,255,65,.5),0 0 60px rgba(0,255,65,.2)}
@@ -696,7 +734,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 .cv-modal-section li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.65rem;top:.4rem}
 .cv-modal-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
 .cv-modal-links{display:flex;gap:.7rem;margin-top:1.4rem}
-.light-mode .cv-modal-section p,.light-mode .cv-modal-section li{color:#475569}
 
 /* CASE STUDY ENHANCED */
 .cv-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:1.4rem 0}
@@ -1165,8 +1202,10 @@ function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.inne
 resizeCanvas();window.addEventListener('resize',resizeCanvas);
 const chars='01アイウエオカキクケコサシスセソタチツテトナニヌネノ',cols=Math.floor(canvas.width/18),drops=Array(cols).fill(1);
 function drawMatrix(){
-  ctx.fillStyle='rgba(7,11,22,0.05)';ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle=document.body.classList.contains('hacker-mode')?'#00FF41':'#00E5FF';
+  const isLight=document.body.classList.contains('light-mode');
+  ctx.fillStyle=isLight?'rgba(244,247,251,0.12)':'rgba(7,11,22,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle=document.body.classList.contains('hacker-mode')?'#00FF41':(isLight?'#0891B2':'#00E5FF');
   ctx.font='13px JetBrains Mono,monospace';
   for(let i=0;i<drops.length;i++){
     ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*18,drops[i]*18);
@@ -1283,10 +1322,12 @@ document.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',window.
   }));
   function draw(){
     cx.clearRect(0,0,pc.width,pc.height);
+    const isLight=document.body.classList.contains('light-mode');
+    const rgb=isLight?'8,145,178':'0,229,255';
     pts.forEach(p=>{
       cx.beginPath();
       cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      cx.fillStyle=`rgba(0,229,255,${p.a})`;
+      cx.fillStyle=`rgba(${rgb},${p.a})`;
       cx.fill();
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0||p.x>pc.width)p.vx*=-1;
@@ -1602,7 +1643,8 @@ if (spotlight && heroSec) {
     const r = heroSec.getBoundingClientRect();
     const x = ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%';
     const y = ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%';
-    spotlight.style.background = `radial-gradient(circle 280px at ${x} ${y}, transparent 0%, rgba(3,7,18,.78) 100%)`;
+    const fade = document.body.classList.contains('light-mode') ? 'rgba(244,247,251,.7)' : 'rgba(3,7,18,.78)';
+    spotlight.style.background = `radial-gradient(circle 280px at ${x} ${y}, transparent 0%, ${fade} 100%)`;
   });
   heroSec.addEventListener('mouseleave', () => { spotlight.style.opacity = '0'; });
   heroSec.addEventListener('mouseenter', () => { spotlight.style.opacity = '1'; });
@@ -1917,7 +1959,8 @@ document.addEventListener('visibilitychange', () => {
       const r = card.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
-      card.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, rgba(0,229,255,.06), transparent 70%), var(--card)`;
+      const glow = document.body.classList.contains('light-mode') ? 'rgba(8,145,178,.07)' : 'rgba(0,229,255,.06)';
+      card.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, ${glow}, transparent 70%), var(--card)`;
     });
     card.addEventListener('mouseleave', () => {
       card.style.background = '';
