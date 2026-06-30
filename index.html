@@ -17,14 +17,15 @@
 <meta property="og:description" content="Cybersecurity student · VAPT · Penetration Testing · TryHackMe Top 4% Global · Open to Internships">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rajendra-singh.dev">
-<meta property="og:image" content="assets/og-banner.png">
+<link rel="canonical" href="https://rajendra-singh.dev/">
+<meta property="og:image" content="https://rajendra-singh.dev/assets/og-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rajendra Singh — Offensive Security">
 <meta name="twitter:description" content="VAPT · Pentesting · TryHackMe Top 4% · Open to Internships">
-<meta name="twitter:image" content="assets/og-banner.png">
+<meta name="twitter:image" content="https://rajendra-singh.dev/assets/og-banner.png">
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -51,10 +52,11 @@
   --bg:#F4F7FB;--card:#FFFFFF;--card2:#EEF2F8;
   --cyan:#0891B2;--cyan-dim:rgba(8,145,178,0.10);
   --purple:#6D28D9;--purple-light:#7C3AED;
-  --text:#0F172A;--muted:#64748B;--border:rgba(8,145,178,0.18);
+  --text:#0F172A;--muted:#475569;--border:rgba(8,145,178,0.18);
   --glow-cyan:0 0 16px rgba(8,145,178,.18);
   --glow-purple:0 0 16px rgba(109,40,217,.16);
 }
+.light-mode .hero-desc,.light-mode .whatido-desc,.light-mode .exp-bullets li,.light-mode .project-desc,.light-mode .project-highlights li,.light-mode .writeup-desc,.light-mode .contact-desc,.light-mode .cmd-item,.light-mode .cv-modal-section p,.light-mode .cv-modal-section li,.light-mode .tag-gray{color:#475569}
 .light-mode body{background:var(--bg)}
 .light-mode .hero-noise,.light-mode #matrix-canvas,.light-mode #particles-canvas{opacity:.18}
 .light-mode .hero-grid-bg{opacity:.4}
@@ -84,6 +86,10 @@
 .hacker-mode #scroll-progress{background:linear-gradient(90deg,#00FF41,#00CC33,#00FF41)}
 
 .hacker-mode .currently-learning{background:rgba(0,255,65,.04);border-color:rgba(0,255,65,.15)}
+.hacker-mode .terminal-live,.hacker-mode .terminal-live span{color:#00FF41;background:#00FF41;box-shadow:0 0 8px #00FF41}
+.hacker-mode .skill-bar-fill{box-shadow:0 0 10px rgba(0,255,65,.6)}
+.hacker-mode .skill-bars-title::before{background:#00FF41;box-shadow:0 0 8px #00FF41}
+.hacker-mode .skill-bar-row:hover{background:rgba(0,255,65,.06)}
 .hacker-mode .exp-dot{border-color:#00FF41;box-shadow:0 0 16px rgba(0,255,65,.6)}
 .hacker-mode .hero-badge{box-shadow:0 0 20px rgba(0,255,65,.12);border-color:rgba(0,255,65,.3)}
 .hacker-mode footer::before{background:linear-gradient(90deg,transparent,#00FF41,#00CC33,transparent)}
@@ -104,6 +110,15 @@ body.no-scroll{overflow:hidden}
 
 /* CUSTOM CURSOR */
 *,*::before,*::after{cursor:none!important}
+@media (pointer:coarse){
+  *,*::before,*::after{cursor:auto!important}
+  #cursor-dot,#cursor-ring{display:none!important}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{cursor:auto!important;animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  #cursor-dot,#cursor-ring{display:none!important}
+  #matrix-canvas,#particles-canvas,.hero-noise{display:none!important}
+}
 #cursor-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;position:fixed;transform:translate(-50%,-50%);z-index:9999;pointer-events:none;transition:transform .1s}
 #cursor-ring{width:32px;height:32px;border:1.5px solid rgba(0,229,255,.5);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:all .12s ease;z-index:9998;pointer-events:none}
 #cursor-ring.hovering{width:46px;height:46px;border-color:var(--cyan);background:rgba(0,229,255,.05)}
@@ -185,8 +200,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero-photo-bar{display:flex;align-items:center;gap:.4rem;padding:.55rem .8rem;background:var(--card);border-bottom:1px solid var(--border)}
 .hero-photo-dot{width:8px;height:8px;border-radius:50%}
 .hero-photo-path{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);margin-left:.3rem}
-.hero-photo{width:100%;height:280px;object-fit:cover;display:none}
-.hero-photo.loaded{display:block}
+.hero-photo{width:100%;height:280px;object-fit:cover;object-position:center 15%;opacity:0}
+.hero-photo.loaded{opacity:1}
 .hero-photo-placeholder{width:100%;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;font-size:2.2rem;color:var(--muted);background:linear-gradient(135deg,rgba(0,229,255,.03),rgba(124,58,237,.03))}
 .hero-photo-placeholder span{font-family:var(--font-mono);font-size:.65rem;text-align:center;letter-spacing:.04em;line-height:1.6}
 .hero-photo-frame.photo-fallback .hero-photo{display:none}
@@ -202,8 +217,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .ctf-proof-header{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;font-family:var(--font-mono);font-size:.78rem;color:var(--text);border-bottom:1px solid var(--border)}
 .ctf-proof-icon{font-size:1.1rem}
 .ctf-proof-icon.htb-green{color:#9FEF00}
-.ctf-proof-img{width:100%;display:none;cursor:zoom-in}
-.ctf-proof-img.loaded{display:block}
+.ctf-proof-img{width:100%;opacity:0;cursor:zoom-in}
+.ctf-proof-img.loaded{opacity:1}
 .ctf-proof-placeholder{height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;font-size:1.8rem;color:var(--muted)}
 .ctf-proof-placeholder span{font-family:var(--font-mono);font-size:.65rem;text-align:center;line-height:1.6}
 .ctf-proof-card.photo-fallback .ctf-proof-img{display:none}
@@ -273,7 +288,9 @@ section{padding:6rem 5%}
 
 /* TERMINAL WIDGET */
 #terminal-section{background:var(--bg)}
-.terminal-window{max-width:860px;margin:0 auto;background:#030610;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 0 60px rgba(0,229,255,.05),0 24px 64px rgba(0,0,0,.6)}
+.terminal-window{max-width:860px;margin:0 auto;background:#030610;border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 0 60px rgba(0,229,255,.05),0 24px 64px rgba(0,0,0,.6);position:relative}
+.terminal-window::before{content:'';position:absolute;inset:-1px;border-radius:12px;padding:1px;background:linear-gradient(120deg,transparent,var(--cyan),transparent);background-size:250% 250%;animation:termBorderSweep 4s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.6}
+@keyframes termBorderSweep{0%{background-position:0% 0%}100%{background-position:250% 250%}}
 .terminal-bar{display:flex;align-items:center;gap:.5rem;padding:.75rem 1.1rem;background:var(--card);border-bottom:1px solid var(--border)}
 .terminal-dots{display:flex;gap:.4rem}
 .terminal-dots span{width:11px;height:11px;border-radius:50%;display:block}
@@ -281,7 +298,11 @@ section{padding:6rem 5%}
 .terminal-dots span:nth-child(2){background:#FFBD2E}
 .terminal-dots span:nth-child(3){background:#27C93F}
 .terminal-bar-title{font-family:var(--font-mono);font-size:.73rem;color:var(--muted);margin-left:.4rem}
-.terminal-body{font-family:var(--font-mono);font-size:.82rem;line-height:1.75;padding:1.3rem 1.5rem;height:300px;overflow-y:auto;color:#94A3B8}
+.terminal-live{margin-left:auto;display:flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:.62rem;color:#4ADE80;letter-spacing:.08em;text-transform:uppercase}
+.terminal-live span{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80;animation:pulse 1.6s ease infinite}
+.terminal-body{font-family:var(--font-mono);font-size:.82rem;line-height:1.75;padding:1.3rem 1.5rem;height:300px;overflow-y:auto;color:#94A3B8;scrollbar-width:thin}
+.terminal-body::-webkit-scrollbar{width:5px}
+.terminal-body::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:3px}
 .term-line{white-space:pre-wrap;word-break:break-word;margin-bottom:.2rem}
 .term-cmd{color:var(--cyan)}
 .term-cmd::before{content:'rs@sec:~$ ';color:var(--purple-light)}
@@ -290,20 +311,23 @@ section{padding:6rem 5%}
 .term-error{color:#F87171}
 .term-success{color:#4ADE80}
 .terminal-input-row{display:flex;align-items:center;gap:.6rem;padding:.85rem 1.5rem;border-top:1px solid var(--border)}
-.terminal-input-row .prompt-sym{color:var(--purple-light);flex-shrink:0;font-family:var(--font-mono);font-size:.82rem}
+.terminal-input-row .prompt-sym{color:var(--purple-light);flex-shrink:0;font-family:var(--font-mono);font-size:.82rem;text-shadow:0 0 8px rgba(124,58,237,.4)}
 .terminal-input{flex:1;background:transparent;border:none;outline:none;color:var(--cyan);font-family:var(--font-mono);font-size:.82rem;caret-color:var(--cyan)}
 .terminal-hint{font-family:var(--font-mono);font-size:.71rem;color:var(--muted);margin-top:1rem;text-align:center;line-height:2}
-.terminal-hint span{color:var(--cyan);text-decoration:underline dotted;transition:color .15s}
-.terminal-hint span:hover{color:#fff}
+.terminal-hint span{color:var(--cyan);text-decoration:underline dotted;transition:color .15s;padding:.15rem .4rem;border-radius:4px}
+.terminal-hint span:hover{color:#fff;background:var(--cyan-dim)}
 
 /* SKILLS */
 #skills{background:var(--card2)}
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
 .skill-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem 1.6rem;transition:all .25s;position:relative;overflow:hidden}
+.skill-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple-light));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.skill-card:hover::after{transform:scaleX(1)}
 .skill-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.03),transparent);opacity:0;transition:opacity .25s}
 .skill-card:hover{border-color:rgba(0,229,255,.45);transform:translateY(-4px);box-shadow:0 0 25px rgba(0,229,255,.1),0 10px 36px rgba(0,0,0,.35)}
 .skill-card:hover::before{opacity:1}
-.skill-card-icon{font-size:1.3rem;margin-bottom:.7rem}
+.skill-card:hover .skill-card-icon{transform:scale(1.18);filter:drop-shadow(0 0 8px var(--cyan))}
+.skill-card-icon{font-size:1.3rem;margin-bottom:.7rem;display:inline-block;transition:all .3s}
 .skill-card-title{font-family:var(--font-mono);font-size:.68rem;color:var(--purple-light);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1rem}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.45rem}
 .tag{font-family:var(--font-mono);font-size:.7rem;padding:.28rem .65rem;border-radius:3px;font-weight:500}
@@ -313,14 +337,21 @@ section{padding:6rem 5%}
 .tag-green{background:rgba(74,222,128,.08);color:#4ADE80;border:1px solid rgba(74,222,128,.18)}
 
 /* SKILL BARS */
-.skill-bars-wrap{margin-top:3.5rem;max-width:680px}
-.skill-bars-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--muted);margin-bottom:1.5rem;letter-spacing:-.01em}
-.skill-bars{display:flex;flex-direction:column;gap:.7rem}
-.skill-bar-row{display:flex;align-items:center;gap:.8rem}
-.skill-bar-label{font-family:var(--font-mono);font-size:.68rem;color:#94A3B8;width:90px;flex-shrink:0}
-.skill-bar-track{flex:1;height:4px;background:rgba(0,229,255,.08);border-radius:2px;overflow:hidden}
-.skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--purple-light));width:0%;transition:width 1.1s cubic-bezier(.4,0,.2,1)}
+.skill-bars-wrap{margin-top:3.5rem;max-width:980px}
+.skill-bars-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--muted);margin-bottom:1.5rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem}
+.skill-bars-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:pulse 2s ease infinite}
+.skill-bars{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem 2.2rem}
+@media(max-width:700px){.skill-bars{grid-template-columns:1fr}}
+.skill-bar-row{display:flex;align-items:center;gap:.8rem;padding:.4rem .6rem;border-radius:8px;transition:background .2s}
+.skill-bar-row:hover{background:var(--cyan-dim)}
+.skill-bar-row{cursor:pointer}
+@keyframes crossLinkFlash{0%,100%{box-shadow:0 0 0 0 transparent}30%{box-shadow:0 0 0 3px var(--cyan),0 0 30px rgba(0,229,255,.3)}}
+.cross-link-flash{animation:crossLinkFlash 1.4s ease}
+.skill-bar-label{font-family:var(--font-mono);font-size:.7rem;color:var(--text);width:100px;flex-shrink:0}
+.skill-bar-track{flex:1;height:5px;background:rgba(0,229,255,.08);border-radius:3px;overflow:hidden;position:relative}
+.skill-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--purple-light));width:0%;transition:width 1.1s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(0,229,255,.5)}
 .skill-bar-pct{font-family:var(--font-mono);font-size:.62rem;color:var(--cyan);width:30px;text-align:right;flex-shrink:0}
+.skill-bar-level{font-family:var(--font-mono);font-size:.56rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:64px;flex-shrink:0;text-align:right}
 
 /* EXPERIENCE */
 #experience{background:var(--bg)}
@@ -343,8 +374,10 @@ section{padding:6rem 5%}
 .exp-bullets{list-style:none}
 .exp-bullets li{font-size:.9rem;color:#94A3B8;padding:.3rem 0 .3rem 1.2rem;position:relative;line-height:1.6}
 .exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.68rem;top:.42rem}
-.lor-badge{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-light);background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.28);padding:.28rem .75rem;border-radius:100px}
+.lor-badge{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-light);background:rgba(124,58,237,.08);border:1px dashed rgba(124,58,237,.45);padding:.32rem .8rem;border-radius:6px;transition:all .2s}
 .lor-badge .lor-dot{width:5px;height:5px;border-radius:50%;background:var(--purple-light);flex-shrink:0}
+.lor-clickable:hover{background:rgba(124,58,237,.18);border-color:var(--purple-light);border-style:solid;transform:translateY(-2px);box-shadow:0 6px 16px rgba(124,58,237,.18)}
+.proof-docs-label{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;width:100%;margin-bottom:.15rem}
 
 /* PROJECTS */
 #projects{background:var(--card2)}
@@ -355,6 +388,12 @@ section{padding:6rem 5%}
 .project-card:hover::after{opacity:1}
 .project-badge{display:inline-block;font-family:var(--font-mono);font-size:.62rem;color:var(--cyan);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);padding:.2rem .6rem;border-radius:3px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;width:fit-content}
 .project-badge.purple{color:var(--purple-light);background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.22)}
+.project-badges-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.project-status{display:inline-block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;width:fit-content}
+.project-status.in-progress{color:#FFBD2E;background:rgba(255,189,46,.08);border:1px solid rgba(255,189,46,.3)}
+.project-status.completed{color:#27C93F;background:rgba(39,201,63,.08);border:1px solid rgba(39,201,63,.3)}
+.case-study-btn{position:relative}
+.case-study-hint{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);margin-top:.4rem;width:100%}
 .project-name{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:.4rem}
 .project-sub{font-size:.78rem;color:var(--purple-light);font-family:var(--font-mono);margin-bottom:.9rem}
 .project-desc{font-size:.87rem;color:#94A3B8;line-height:1.65;flex:1;margin-bottom:1.1rem}
@@ -646,6 +685,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 
 /* SMOOTH TAG HOVER */
 .tag{transition:all .2s}
+.skill-tags .tag:hover,.project-tech .tag:hover,.whatido-tags .tag:hover{transform:translateY(-2px);filter:brightness(1.25)}
 .tag-cyan:hover{background:rgba(0,229,255,.15);border-color:rgba(0,229,255,.4)}
 .tag-purple:hover{background:rgba(124,58,237,.18);border-color:rgba(124,58,237,.4)}
 .tag-green:hover{background:rgba(74,222,128,.15);border-color:rgba(74,222,128,.4)}
@@ -770,6 +810,26 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   #hero{min-height:auto!important;padding:1rem 0!important}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Rajendra Singh",
+  "url": "https://rajendra-singh.dev",
+  "jobTitle": "Cybersecurity Student & VAPT Specialist",
+  "description": "Cybersecurity student specializing in VAPT, penetration testing, and offensive security. TryHackMe Top 4% Global.",
+  "knowsAbout": ["Penetration Testing", "Vulnerability Assessment", "Web Application Security", "Network Security", "Digital Forensics", "OSINT"],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Quantum University, Roorkee"
+  },
+  "sameAs": [
+    "https://github.com/Raj7l69",
+    "https://linkedin.com/in/rajendra-singh01",
+    "https://tryhackme.com/p/Ra.oneX"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -894,6 +954,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <span class="cl-item">Active Directory</span>
       <span class="cl-sep">·</span>
       <span class="cl-item">API Security</span>
+      <span class="cl-sep">·</span>
+      <span class="cl-item" id="cl-updated" style="opacity:.6"></span>
     </div>
     <div class="status-pills">
       <div class="status-pill"><span class="pill-dot green"></span><span class="pill-label">Status:</span><span class="pill-val">Open to Work</span></div>
@@ -903,36 +965,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div class="status-pill"><span class="pill-dot" style="background:#A78BFA;animation:pulse 1s infinite"></span><span class="pill-label">Hacking for:</span><span class="pill-val" id="days-counter">...</span></div>
     </div>
   </div>
-  <div class="hero-photo-frame">
-    <div class="hero-photo-bar">
-      <span class="hero-photo-dot" style="background:#FF5F56"></span>
-      <span class="hero-photo-dot" style="background:#FFBD2E"></span>
-      <span class="hero-photo-dot" style="background:#27C93F"></span>
-      <span class="hero-photo-path">~/profile.jpg</span>
-    </div>
-    <img data-src="assets/profile.jpg" alt="Rajendra Singh" class="hero-photo lazy-img">
-    <div class="hero-photo-placeholder">📷<span>Profile photo<br>coming soon</span></div>
-  </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- CTF PROOF STRIP — TryHackMe / HTB profile screenshots -->
-<section id="ctf-proof" class="ctf-proof-section">
-  <div class="section-label">00 / Proof</div>
-  <h2 class="section-title">Platform <span class="accent">Profiles</span></h2>
-  <div class="ctf-proof-grid">
-    <div class="ctf-proof-card">
-      <div class="ctf-proof-header"><span class="ctf-proof-icon">⚔️</span><span>TryHackMe — Ra.oneX</span></div>
-      <img data-src="assets/thm-profile.png" alt="TryHackMe Profile" class="ctf-proof-img lazy-img">
-      <div class="ctf-proof-placeholder">🖼️<span>THM profile screenshot<br>coming soon</span></div>
-    </div>
-    <div class="ctf-proof-card">
-      <div class="ctf-proof-header"><span class="ctf-proof-icon htb-green">🟩</span><span>HackTheBox</span></div>
-      <img data-src="assets/htb-profile.jpg" alt="HackTheBox Profile" class="ctf-proof-img lazy-img">
-      <div class="ctf-proof-placeholder">🖼️<span>HTB profile screenshot<br>coming soon</span></div>
-    </div>
   </div>
 </section>
 
@@ -1002,6 +1034,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="terminal-bar">
       <div class="terminal-dots"><span></span><span></span><span></span></div>
       <div class="terminal-bar-title">rajendra@security:~ — bash — 80×24</div>
+      <div class="terminal-live"><span></span>LIVE</div>
     </div>
     <div class="terminal-body" id="termBody">
       <div class="term-line">Welcome to <span class="term-accent">rs@sec</span> — Rajendra Singh's security shell.</div>
@@ -1035,13 +1068,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="skill-bars-wrap">
     <div class="skill-bars-title">Tool Proficiency</div>
     <div class="skill-bars" id="skillBars">
-      <div class="skill-bar-row"><span class="skill-bar-label">Burp Suite</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="82"></div></div><span class="skill-bar-pct">82%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">Nmap</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div><span class="skill-bar-pct">85%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div><span class="skill-bar-pct">78%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">Metasploit</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div><span class="skill-bar-pct">70%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">SQLMap</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="75"></div></div><span class="skill-bar-pct">75%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">Wireshark</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="72"></div></div><span class="skill-bar-pct">72%</span></div>
-      <div class="skill-bar-row"><span class="skill-bar-label">Linux / Bash</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div><span class="skill-bar-pct">80%</span></div>
+      <div class="skill-bar-row" data-skill="Burp Suite"><span class="skill-bar-label">Burp Suite</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="82"></div></div><span class="skill-bar-pct">82%</span><span class="skill-bar-level">Advanced</span></div>
+      <div class="skill-bar-row" data-skill="Nmap"><span class="skill-bar-label">Nmap</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div><span class="skill-bar-pct">85%</span><span class="skill-bar-level">Advanced</span></div>
+      <div class="skill-bar-row" data-skill="Python"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div><span class="skill-bar-pct">78%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="Metasploit"><span class="skill-bar-label">Metasploit</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="70"></div></div><span class="skill-bar-pct">70%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="SQLMap"><span class="skill-bar-label">SQLMap</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="75"></div></div><span class="skill-bar-pct">75%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="Wireshark"><span class="skill-bar-label">Wireshark</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="72"></div></div><span class="skill-bar-pct">72%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="Linux"><span class="skill-bar-label">Linux / Bash</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div><span class="skill-bar-pct">80%</span><span class="skill-bar-level">Advanced</span></div>
     </div>
   </div>
 </section>
@@ -1059,8 +1092,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="exp-meta-row">
           <div class="exp-tools"><span class="tag tag-cyan">Burp Suite</span><span class="tag tag-cyan">SQLMap</span><span class="tag tag-cyan">Gobuster</span><span class="tag tag-gray">OWASP Top 10</span></div>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-            <button class="lor-badge lor-clickable" data-lor="assets/lor-unified-mentor.png"><span class="lor-dot"></span>🔍 LOR — Unified Mentor</button>
-            <button class="lor-badge lor-clickable" data-lor="assets/cert-unified-mentor-completion.png"><span class="lor-dot"></span>🔍 Completion Cert — Unified Mentor</button>
+            <span class="proof-docs-label">📎 Proof Documents — click to view:</span>
+            <button class="lor-badge lor-clickable" data-lor="assets/lor-unified-mentor.png"><span class="lor-dot"></span>🔍 View LOR — Unified Mentor</button>
+            <button class="lor-badge lor-clickable" data-lor="assets/cert-unified-mentor-completion.png"><span class="lor-dot"></span>🔍 View Completion Cert</button>
           </div>
         </div>
         <ul class="exp-bullets">
@@ -1080,8 +1114,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <div class="exp-meta-row">
           <div class="exp-tools"><span class="tag tag-purple">Dark Web Investigation</span><span class="tag tag-purple">Digital Forensics</span><span class="tag tag-gray">U.P. Police</span></div>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-            <button class="lor-badge lor-clickable" data-lor="assets/lor-amroha-offer.jpg"><span class="lor-dot"></span>🔍 Offer Letter — Amroha Police</button>
-            <button class="lor-badge lor-clickable" data-lor="assets/cert-apcsip-completion.png"><span class="lor-dot"></span>🔍 Completion Cert — Amroha Police</button>
+            <span class="proof-docs-label">📎 Proof Documents — click to view:</span>
+            <button class="lor-badge lor-clickable" data-lor="assets/lor-amroha-offer.jpg"><span class="lor-dot"></span>🔍 View Offer Letter</button>
+            <button class="lor-badge lor-clickable" data-lor="assets/cert-apcsip-completion.png"><span class="lor-dot"></span>🔍 View Completion Cert</button>
           </div>
         </div>
         <ul class="exp-bullets">
@@ -1102,9 +1137,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <section id="projects">
   <div class="section-label">04 / Build</div>
   <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+  <p style="font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin:-1rem 0 1.8rem;letter-spacing:.03em">📄 Click <strong style="color:var(--purple-light)">"Read Case Study"</strong> on any project below for a full problem → approach → result breakdown</p>
   <div class="projects-grid">
     <div class="project-card tilt-card reveal">
-      <div class="project-badge">Network Security</div>
+      <div class="project-badges-row">
+        <div class="project-badge">Network Security</div>
+        <div class="project-status in-progress">🟡 In Progress</div>
+      </div>
       <div class="project-name">ZeroTrace</div>
       <div class="project-sub">Network Monitoring & Intrusion Response Platform</div>
       <div class="project-desc">Full-stack IDS/IPS platform with real-time packet capture, automated IP blocking, and YAML-driven SOAR-style playbooks. Purple team approach — offensive simulation module validates defensive detection coverage.</div>
@@ -1115,10 +1154,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <li>Local AI (Ollama/llama3) for threat explanation; Isolation Forest on CICIDS2017 targeting 94%+ accuracy</li>
       </ul>
       <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Scapy</span><span class="tag tag-cyan">FastAPI</span><span class="tag tag-gray">Docker</span><span class="tag tag-gray">SQLite/PostgreSQL</span><span class="tag tag-purple">Ollama</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="zerotrace">📄 Case Study</button></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="zerotrace">📄 Read Case Study →</button></div>
     </div>
     <div class="project-card tilt-card reveal">
-      <div class="project-badge purple">Offensive Tool</div>
+      <div class="project-badges-row">
+        <div class="project-badge purple">Offensive Tool</div>
+        <div class="project-status completed">✅ Completed</div>
+      </div>
       <div class="project-name">Linux PrivEsc Toolkit</div>
       <div class="project-sub">Privilege Escalation Automation Framework</div>
       <div class="project-desc">Automated enumeration toolkit for Linux privilege escalation — eliminates repetitive manual work during penetration testing and surfaces exploitable vectors missed in manual audits.</div>
@@ -1129,7 +1171,24 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <li>Modular architecture — easy to extend with new detection techniques</li>
       </ul>
       <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Bash</span><span class="tag tag-gray">Linux</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="privesc">📄 Case Study</button></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="privesc">📄 Read Case Study →</button></div>
+    </div>
+    <div class="project-card tilt-card reveal">
+      <div class="project-badges-row">
+        <div class="project-badge">Endpoint Security</div>
+        <div class="project-status completed">✅ Completed</div>
+      </div>
+      <div class="project-name">🛡️ SentinelUSB</div>
+      <div class="project-sub">USB Device Control & Monitoring Framework</div>
+      <div class="project-desc">Windows-based endpoint security tool that monitors and controls USB device connections in real time — built to stop insider threats and data exfiltration using hardware-level device fingerprinting instead of spoofable volume labels.</div>
+      <ul class="project-highlights">
+        <li>Fingerprints USB devices via Vendor ID, Product ID, Serial Number, and PNP Device ID — resistant to label-spoofing attacks</li>
+        <li>Allowlist/blocklist policy engine with automatic device ejection (mountvol /D) for blocked or malicious devices</li>
+        <li>Real-time file transfer auditing with HIGH/MEDIUM/LOW risk classification by file type, size, and sensitive keywords</li>
+        <li>Auto-generated audit reports on session end — structured logs for events, alerts, and file transfers</li>
+      </ul>
+      <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">WMI</span><span class="tag tag-gray">Windows</span><span class="tag tag-purple">DLP</span></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69/USB-Device-Control-Monitoring-Framework" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="sentinelusb">📄 Read Case Study →</button></div>
     </div>
   </div>
 </section>
@@ -1139,7 +1198,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <!-- WRITEUPS -->
 <section id="writeups">
   <div class="section-label">04.5 / Notes</div>
-  <h2 class="section-title">CTF <span class="accent">Writeups</span></h2>
+  <h2 class="section-title">Writeups & <span class="accent">Findings</span></h2>
   <div class="writeups-wrap reveal">
     <div class="writeup-card coming-soon">
       <span class="writeup-icon">📝</span>
@@ -1151,6 +1210,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <span class="writeup-icon">🔬</span>
       <div class="writeup-title">VAPT Case Notes</div>
       <div class="writeup-desc">Breakdown of vulnerability classes encountered during practice and internship engagements — root cause, impact, and remediation.</div>
+      <span class="writeup-status">Coming Soon</span>
+    </div>
+    <div class="writeup-card coming-soon">
+      <span class="writeup-icon">🐛</span>
+      <div class="writeup-title">Bug Hunting Approach & Findings</div>
+      <div class="writeup-desc">Methodology, target recon, and findings from ongoing bug bounty hunting — scope analysis, vulnerability discovery, and disclosure notes.</div>
       <span class="writeup-status">Coming Soon</span>
     </div>
     <div class="writeup-card coming-soon">
@@ -1302,11 +1367,19 @@ document.getElementById('hero').addEventListener('mousemove',e=>{
 });
 
 /* HACKER MODE */
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+function syncThemeColor(){
+  if(!themeColorMeta) return;
+  if(document.body.classList.contains('hacker-mode')) themeColorMeta.setAttribute('content','#00FF41');
+  else if(document.body.classList.contains('light-mode')) themeColorMeta.setAttribute('content','#0891B2');
+  else themeColorMeta.setAttribute('content','#00E5FF');
+}
 const hackerBtn=document.getElementById('hackerToggle');
 function toggleHacker(){
   document.body.classList.toggle('hacker-mode');
   hackerBtn.classList.toggle('on');
   hackerBtn.textContent=document.body.classList.contains('hacker-mode')?'[ normal ]':'[ hack ]';
+  syncThemeColor();
   // Flash effect
   const flash=document.createElement('div');
   flash.style.cssText='position:fixed;inset:0;background:'+(document.body.classList.contains('hacker-mode')?'rgba(0,255,65,.06)':'rgba(0,229,255,.04)')+';z-index:9999;pointer-events:none;animation:flashOut .4s ease forwards';
@@ -1623,7 +1696,7 @@ THM      : tryhackme.com/p/Ra.oneX`,
   hack: () => `<span style="color:#F87171">⚠ Initiating ethical recon...</span>
 <span style="color:#FBBF24">→ target: localhost</span>
 <span style="color:#4ADE80">✓ 0 vulnerabilities found (you're clean)</span>`,
-  matrix: () => { document.body.classList.toggle('hacker-mode'); hackerBtn.classList.toggle('on'); hackerBtn.textContent = document.body.classList.contains('hacker-mode') ? '[ normal ]' : '[ hack ]'; return `<span style="color:#00FF41">Hacker mode ${document.body.classList.contains('hacker-mode') ? 'ON' : 'OFF'}</span>`; },
+  matrix: () => { document.body.classList.toggle('hacker-mode'); hackerBtn.classList.toggle('on'); hackerBtn.textContent = document.body.classList.contains('hacker-mode') ? '[ normal ]' : '[ hack ]'; syncThemeColor(); return `<span style="color:#00FF41">Hacker mode ${document.body.classList.contains('hacker-mode') ? 'ON' : 'OFF'}</span>`; },
   scan: () => { document.body.classList.toggle('scan-on'); return `<span style="color:#A78BFA">Scanline effect ${document.body.classList.contains('scan-on') ? 'enabled' : 'disabled'}</span>`; },
 };
 Object.assign(cmds, extraCmds);
@@ -1833,6 +1906,7 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
           document.body.classList.add('hacker-mode');
           hackerBtn.classList.add('on');
           hackerBtn.textContent='[ normal ]';
+          syncThemeColor();
           setTimeout(()=>toast.classList.remove('show'),3500);
         }
       }
@@ -1998,8 +2072,37 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
   });
 })();
 
+/* SKILL BAR CROSS-LINK — click a tool to jump to where it's used */
+(function(){
+  document.querySelectorAll('.skill-bar-row[data-skill]').forEach(row=>{
+    row.setAttribute('tabindex','0');
+    row.setAttribute('role','button');
+    row.addEventListener('click',()=>{
+      const skill = row.dataset.skill.toLowerCase();
+      const candidates = document.querySelectorAll('#projects .tag, #experience .tag');
+      let target = null;
+      candidates.forEach(tag=>{
+        if(!target && tag.textContent.trim().toLowerCase().includes(skill)){
+          target = tag.closest('.project-card, .exp-card');
+        }
+      });
+      if(target){
+        target.scrollIntoView({behavior:'smooth',block:'center'});
+        target.classList.remove('cross-link-flash');
+        void target.offsetWidth;
+        target.classList.add('cross-link-flash');
+      }
+    });
+    row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();row.click();}});
+  });
+})();
+
 /* DAYS HACKING COUNTER */
 (function(){
+  const clEl = document.getElementById('cl-updated');
+  if(clEl){
+    clEl.textContent = 'Updated ' + new Date().toLocaleDateString('en-IN',{month:'short',year:'numeric'});
+  }
   const el = document.getElementById('days-counter');
   if(!el) return;
   // Started cybersecurity journey ~Aug 2024 (college start)
@@ -2155,10 +2258,12 @@ document.addEventListener('visibilitychange', () => {
   if(!toggle) return;
   const saved = localStorage.getItem('rs-theme');
   if(saved === 'light'){ document.body.classList.add('light-mode'); toggle.textContent = '🌙'; }
+  syncThemeColor();
   toggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light-mode');
     toggle.textContent = isLight ? '🌙' : '☀';
     localStorage.setItem('rs-theme', isLight ? 'light' : 'dark');
+    syncThemeColor();
     // quick flash transition
     const flash = document.createElement('div');
     flash.style.cssText = 'position:fixed;inset:0;background:'+(isLight?'rgba(244,247,251,.5)':'rgba(3,7,18,.5)')+';z-index:9999;pointer-events:none;animation:flashOut .35s ease forwards';
@@ -2177,6 +2282,7 @@ document.addEventListener('visibilitychange', () => {
   const cases = {
     zerotrace: {
       badge: 'Network Security', badgeClass: '',
+      status: 'In Progress', statusClass: 'in-progress',
       title: 'ZeroTrace',
       sub: 'Network Monitoring & Intrusion Response Platform',
       problem: 'Most student-built IDS projects stop at packet sniffing. ZeroTrace was built to go further — detect attacks in real time, automatically respond by blocking malicious IPs, and let an offensive lab module validate that the defensive side actually works, rather than trusting it blindly.',
@@ -2193,6 +2299,7 @@ document.addEventListener('visibilitychange', () => {
     },
     privesc: {
       badge: 'Offensive Tool', badgeClass: 'purple',
+      status: 'Completed', statusClass: 'completed',
       title: 'Linux PrivEsc Toolkit',
       sub: 'Privilege Escalation Automation Framework',
       problem: 'During penetration testing engagements, privilege escalation enumeration on Linux is repetitive — checking SUID/SGID binaries, sudo misconfigurations, cron jobs, and writable paths manually wastes time better spent on exploitation.',
@@ -2206,6 +2313,23 @@ document.addEventListener('visibilitychange', () => {
       result: 'A reusable enumeration toolkit that turns a 20-30 minute manual process into a single command, with consistent, structured output suitable for inclusion directly in a pentest report.',
       tech: ['Python','Bash','Linux'],
       github: 'https://github.com/Raj7l69'
+    },
+    sentinelusb: {
+      badge: 'Endpoint Security', badgeClass: '',
+      status: 'Completed', statusClass: 'completed',
+      title: '🛡️ SentinelUSB',
+      sub: 'USB Device Control & Monitoring Framework',
+      problem: 'Most organizations rely on drive letters or volume names to identify USB devices — but an attacker can rename any drive to look like a trusted one, and a terminated employee can bring in a personal drive to bypass label-based controls. Standard Windows logging also doesn\'t show what files were actually copied to USB, leaving blind spots for insider threats and data exfiltration.',
+      approach: [
+        'Built hardware-level device fingerprinting using Vendor ID, Product ID, Serial Number, and PNP Device ID — identifiers pulled directly from the USB controller that are far harder to spoof than a volume label',
+        'Designed a decision pipeline: blocklist check first (auto-eject on match), then allowlist check, then label-spoof detection, falling through to an "unknown device" audit state for anything unrecognized',
+        'Implemented a real-time file auditor that watches every file written to an authorized USB and classifies the transfer as HIGH/MEDIUM/LOW risk by extension, file size, and sensitive keywords (password, secret, key, token)',
+        'Added automatic enforcement — blocked or spoofed devices are ejected immediately via mountvol /D, no manual intervention needed',
+        'Structured all activity into three separate logs (events, alerts, transfer audit) and built an automatic report generator that produces a full session security report on exit'
+      ],
+      result: 'A working endpoint DLP tool that closes the gap left by label-based USB controls — every device is judged by hardware identity, not a name that can be typed in seconds. Released as v2.0 with a full policy engine (allowlist.json / blocklist.json) for easy real-world deployment.',
+      tech: ['Python','WMI','Windows','DLP','Endpoint Security'],
+      github: 'https://github.com/Raj7l69/USB-Device-Control-Monitoring-Framework'
     }
   };
 
@@ -2215,6 +2339,7 @@ document.addEventListener('visibilitychange', () => {
     body.innerHTML = `
       <button class="cv-modal-close" id="caseModalClose2" aria-label="Close">✕</button>
       <div class="cv-modal-badge ${c.badgeClass}">${c.badge}</div>
+      <div class="project-status ${c.statusClass}" style="margin-left:.5rem;display:inline-block">${c.statusClass==='in-progress'?'🟡':'✅'} ${c.status}</div>
       <h3>${c.title}</h3>
       <div class="cv-sub">${c.sub}</div>
       <div class="cv-modal-section">
