@@ -8,15 +8,23 @@
 <meta name="theme-color" content="#00E5FF">
 <meta name="keywords" content="VAPT, Penetration Testing, Offensive Security, Cybersecurity, Bug Bounty, TryHackMe, HackTheBox">
 <meta name="author" content="Rajendra Singh">
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <!-- Open Graph -->
 <meta property="og:title" content="Rajendra Singh — Offensive Security & VAPT">
 <meta property="og:description" content="Cybersecurity student · VAPT · Penetration Testing · TryHackMe Top 4% Global · Open to Internships">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rajendra-singh.dev">
+<meta property="og:image" content="assets/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rajendra Singh — Offensive Security">
 <meta name="twitter:description" content="VAPT · Pentesting · TryHackMe Top 4% · Open to Internships">
+<meta name="twitter:image" content="assets/og-banner.png">
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -39,6 +47,27 @@
   --purple:#00CC33;--purple-light:#00FF41;
   --text:#00FF41;--muted:#005500;--border:rgba(0,255,65,0.18);
 }
+.light-mode{
+  --bg:#F4F7FB;--card:#FFFFFF;--card2:#EEF2F8;
+  --cyan:#0891B2;--cyan-dim:rgba(8,145,178,0.10);
+  --purple:#6D28D9;--purple-light:#7C3AED;
+  --text:#0F172A;--muted:#64748B;--border:rgba(8,145,178,0.18);
+  --glow-cyan:0 0 16px rgba(8,145,178,.18);
+  --glow-purple:0 0 16px rgba(109,40,217,.16);
+}
+.light-mode body{background:var(--bg)}
+.light-mode .hero-noise,.light-mode #matrix-canvas,.light-mode #particles-canvas{opacity:.18}
+.light-mode .hero-grid-bg{opacity:.4}
+.light-mode .hero-name,.light-mode .section-title .accent,.light-mode .ach-num{text-shadow:none}
+.light-mode nav{background:rgba(244,247,251,.88);border-bottom-color:rgba(8,145,178,.15)}
+.light-mode nav.scrolled{background:rgba(244,247,251,.97);box-shadow:0 1px 0 var(--border),0 4px 24px rgba(15,23,42,.08)}
+.light-mode .project-card,.light-mode .skill-card,.light-mode .whatido-card,.light-mode .exp-card,.light-mode .cert-card{box-shadow:0 2px 12px rgba(15,23,42,.05)}
+.light-mode .btn-primary{color:#fff}
+.light-mode .terminal-window,.light-mode .terminal-body{background:#0B1220;color:#CBD5E1}
+.light-mode .mobile-menu{background:rgba(244,247,251,.98)}
+.light-mode #loader{background:var(--bg)}
+.light-mode .theme-toggle{color:#0F172A}
+.light-mode .hero-badge,.light-mode .currently-learning,.light-mode .status-pill{box-shadow:0 1px 4px rgba(15,23,42,.04)}
 /* HACKER MODE EXTRAS */
 .hacker-mode body{font-family:var(--font-mono)}
 .hacker-mode .hero-name{text-shadow:0 0 30px rgba(0,255,65,.5),0 0 60px rgba(0,255,65,.2)}
@@ -106,6 +135,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links a.active::after{transform:scaleX(1)}
 .hacker-toggle{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);background:transparent;border:1px solid var(--border);padding:.28rem .65rem;border-radius:3px;letter-spacing:.08em;text-transform:uppercase;transition:all .2s}
 .hacker-toggle:hover,.hacker-toggle.on{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-dim)}
+.theme-toggle{font-family:var(--font-mono);font-size:.85rem;color:var(--muted);background:transparent;border:1px solid var(--border);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .25s;line-height:1}
+.theme-toggle:hover{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-dim);transform:rotate(20deg)}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--cyan);border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -624,6 +655,44 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   .hero-badge{font-size:.62rem}
   .contact-link{padding:.85rem 1rem}
 }
+
+/* PRINT STYLES */
+@media print{
+  *,*::before,*::after{animation:none!important;transition:none!important;box-shadow:none!important;text-shadow:none!important}
+  body{background:#fff!important;color:#111!important;cursor:auto!important}
+  #cursor-dot,#cursor-ring,#scroll-progress,#back-top,#copy-toast,#key-hint,nav,.mobile-menu,#side-nav,#cv-btn,#cmd-overlay,#konami-toast,.hero-cta a[href*="mailto"],.terminal-window,.terminal-hint,#matrix-canvas,#particles-canvas,.hero-noise,.hero-grid-bg,.hero-glow,.hero-glow-2,.hero-glow-3,#spotlight,.currently-learning,.status-pills,.section-divider,.btn-outline,.btn-primary,footer .footer-links,.cv-modal-overlay{display:none!important}
+  section{padding:1.2rem 0!important;page-break-inside:avoid}
+  .hero-name,.section-title{color:#111!important}
+  .section-title .accent,.hero-name .accent{color:#0891B2!important}
+  .project-card,.skill-card,.whatido-card,.exp-card,.cert-card,.edu-card{border:1px solid #ccc!important;background:#fafafa!important;color:#111!important;break-inside:avoid}
+  a{color:#0891B2!important;text-decoration:underline}
+  .tag{border:1px solid #999!important;background:#eee!important;color:#111!important}
+  #hero{min-height:auto!important;padding-top:1rem!important}
+  .pill-val,.pill-label,.exp-bullets li,.project-desc,.project-highlights li,.whatido-desc,.skill-card-title{color:#222!important}
+}
+
+/* PROJECT CASE STUDY MODAL */
+.case-study-btn{font-family:var(--font-mono);font-size:.68rem;color:var(--purple-light);text-decoration:none;border:1px solid rgba(124,58,237,.3);padding:.25rem .7rem;border-radius:3px;transition:all .2s;letter-spacing:.05em;background:transparent;cursor:pointer}
+.case-study-btn:hover{background:rgba(124,58,237,.1);border-color:var(--purple-light)}
+.cv-modal-overlay{position:fixed;inset:0;z-index:800;background:rgba(3,7,18,.82);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:5vh 5%;opacity:0;transition:opacity .25s}
+.cv-modal-overlay.open{display:flex;opacity:1}
+.cv-modal{background:var(--card);border:1px solid var(--border);border-radius:14px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;padding:2.2rem 2.4rem;position:relative;transform:translateY(16px) scale(.97);transition:transform .3s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.cv-modal-overlay.open .cv-modal{transform:translateY(0) scale(1)}
+.cv-modal-close{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;border-radius:50%;background:var(--card2);border:1px solid var(--border);color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+.cv-modal-close:hover{color:var(--cyan);border-color:var(--cyan)}
+.cv-modal-badge{display:inline-block;font-family:var(--font-mono);font-size:.62rem;color:var(--cyan);background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);padding:.2rem .6rem;border-radius:3px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.cv-modal-badge.purple{color:var(--purple-light);background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.25)}
+.cv-modal h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+.cv-modal .cv-sub{font-family:var(--font-mono);font-size:.78rem;color:var(--purple-light);margin-bottom:1.4rem}
+.cv-modal-section{margin-bottom:1.4rem}
+.cv-modal-section h4{font-family:var(--font-mono);font-size:.68rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem}
+.cv-modal-section p{font-size:.88rem;color:#94A3B8;line-height:1.7}
+.cv-modal-section ul{list-style:none}
+.cv-modal-section li{font-size:.86rem;color:#94A3B8;padding:.28rem 0 .28rem 1.1rem;position:relative;line-height:1.6}
+.cv-modal-section li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.65rem;top:.4rem}
+.cv-modal-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.4rem}
+.cv-modal-links{display:flex;gap:.7rem;margin-top:1.4rem}
+.light-mode .cv-modal-section p,.light-mode .cv-modal-section li{color:#475569}
 </style>
 </head>
 <body>
@@ -657,6 +726,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 <div id="konami-toast">
   <div class="k-title">🎮 Cheat Code Activated!</div>
   <div class="k-sub">↑↑↓↓←→←→BA — You found the easter egg.<br>Hire this guy already.</div>
+</div>
+
+<!-- PROJECT CASE STUDY MODAL -->
+<div class="cv-modal-overlay" id="caseModal">
+  <div class="cv-modal" id="caseModalBody">
+    <button class="cv-modal-close" id="caseModalClose" aria-label="Close">✕</button>
+    <!-- content injected by JS -->
+  </div>
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -693,6 +770,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hacker-toggle" id="hackerToggle">[ hack ]</button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">☀</button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -721,6 +799,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <p class="hero-desc">Cyber Security student specializing in vulnerability assessment, penetration testing, and offensive security tooling. Hands-on with real-world VAPT, government cyber programs, and building open-source security tools.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">⚡ View Projects</a>
+      <a href="assets/Rajendra_Singh_Resume.pdf" download class="btn btn-outline">⬇ Download Resume</a>
       <a href="mailto:rajendrajra65@gmail.com" class="btn btn-outline">✉ Get In Touch</a>
     </div>
     <div class="currently-learning reveal">
@@ -914,7 +993,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <li>Local AI (Ollama/llama3) for threat explanation; Isolation Forest on CICIDS2017 targeting 94%+ accuracy</li>
       </ul>
       <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Scapy</span><span class="tag tag-cyan">FastAPI</span><span class="tag tag-gray">Docker</span><span class="tag tag-gray">SQLite/PostgreSQL</span><span class="tag tag-purple">Ollama</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="zerotrace">📄 Case Study</button></div>
     </div>
     <div class="project-card tilt-card reveal">
       <div class="project-badge purple">Offensive Tool</div>
@@ -928,7 +1007,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <li>Modular architecture — easy to extend with new detection techniques</li>
       </ul>
       <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Bash</span><span class="tag tag-gray">Linux</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="privesc">📄 Case Study</button></div>
     </div>
   </div>
 </section>
@@ -1906,6 +1985,105 @@ document.addEventListener('visibilitychange', () => {
       card.style.removeProperty('--beam');
     });
   });
+})();
+
+/* LIGHT / DARK THEME TOGGLE */
+(function(){
+  const toggle = document.getElementById('themeToggle');
+  if(!toggle) return;
+  const saved = localStorage.getItem('rs-theme');
+  if(saved === 'light'){ document.body.classList.add('light-mode'); toggle.textContent = '🌙'; }
+  toggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    toggle.textContent = isLight ? '🌙' : '☀';
+    localStorage.setItem('rs-theme', isLight ? 'light' : 'dark');
+    // quick flash transition
+    const flash = document.createElement('div');
+    flash.style.cssText = 'position:fixed;inset:0;background:'+(isLight?'rgba(244,247,251,.5)':'rgba(3,7,18,.5)')+';z-index:9999;pointer-events:none;animation:flashOut .35s ease forwards';
+    document.body.appendChild(flash);
+    setTimeout(()=>flash.remove(),350);
+  });
+})();
+
+/* PROJECT CASE STUDY MODAL */
+(function(){
+  const overlay = document.getElementById('caseModal');
+  const body = document.getElementById('caseModalBody');
+  const closeBtn = document.getElementById('caseModalClose');
+  if(!overlay) return;
+
+  const cases = {
+    zerotrace: {
+      badge: 'Network Security', badgeClass: '',
+      title: 'ZeroTrace',
+      sub: 'Network Monitoring & Intrusion Response Platform',
+      problem: 'Most student-built IDS projects stop at packet sniffing. ZeroTrace was built to go further — detect attacks in real time, automatically respond by blocking malicious IPs, and let an offensive lab module validate that the defensive side actually works, rather than trusting it blindly.',
+      approach: [
+        'Designed a 10-module decoupled architecture so the IDS engine, dashboard, and response system can be developed and scaled independently',
+        'Built the offensive lab module first — simulating port scans, brute-force attempts, and DDoS floods — to have a reliable way to test detection accuracy',
+        'Implemented sub-50ms automated iptables blocking once a YAML-defined signature matches incoming traffic',
+        'Added a WebSocket-based live dashboard so alerts appear in real time instead of requiring a manual refresh',
+        'Integrated a local LLM (Ollama/llama3) to translate raw alert data into plain-English threat explanations — no API cost, fully offline'
+      ],
+      result: 'A working purple-team platform: the offensive module attacks, the defensive module detects and blocks within sub-50ms, and everything is logged to SQLite/PostgreSQL for review. Currently extending it with Isolation Forest-based ML anomaly detection trained on CICIDS2017.',
+      tech: ['Python','Scapy','FastAPI','WebSocket','SQLite/PostgreSQL','Docker','Ollama','YAML'],
+      github: 'https://github.com/Raj7l69'
+    },
+    privesc: {
+      badge: 'Offensive Tool', badgeClass: 'purple',
+      title: 'Linux PrivEsc Toolkit',
+      sub: 'Privilege Escalation Automation Framework',
+      problem: 'During penetration testing engagements, privilege escalation enumeration on Linux is repetitive — checking SUID/SGID binaries, sudo misconfigurations, cron jobs, and writable paths manually wastes time better spent on exploitation.',
+      approach: [
+        'Automated detection of SUID/SGID binaries and cross-referenced known privilege escalation techniques against them',
+        'Built enumeration for sudo misconfigurations (NOPASSWD entries, dangerous binaries in sudoers)',
+        'Added scanning for writable cron jobs, services, and Linux capabilities that are commonly missed in manual audits',
+        'Structured the output as a severity-rated report (Critical/High/Medium/Low) with affected paths and remediation steps',
+        'Designed the codebase modularly so new detection techniques can be added without touching the core engine'
+      ],
+      result: 'A reusable enumeration toolkit that turns a 20-30 minute manual process into a single command, with consistent, structured output suitable for inclusion directly in a pentest report.',
+      tech: ['Python','Bash','Linux'],
+      github: 'https://github.com/Raj7l69'
+    }
+  };
+
+  function openCase(key){
+    const c = cases[key];
+    if(!c) return;
+    body.innerHTML = `
+      <button class="cv-modal-close" id="caseModalClose2" aria-label="Close">✕</button>
+      <div class="cv-modal-badge ${c.badgeClass}">${c.badge}</div>
+      <h3>${c.title}</h3>
+      <div class="cv-sub">${c.sub}</div>
+      <div class="cv-modal-section">
+        <h4>The Problem</h4>
+        <p>${c.problem}</p>
+      </div>
+      <div class="cv-modal-section">
+        <h4>Approach</h4>
+        <ul>${c.approach.map(a=>`<li>${a}</li>`).join('')}</ul>
+      </div>
+      <div class="cv-modal-section">
+        <h4>Result</h4>
+        <p>${c.result}</p>
+      </div>
+      <div class="cv-modal-tech">${c.tech.map(t=>`<span class="tag tag-cyan">${t}</span>`).join('')}</div>
+      <div class="cv-modal-links"><a href="${c.github}" target="_blank" rel="noopener" class="project-link">GitHub →</a></div>
+    `;
+    document.getElementById('caseModalClose2').addEventListener('click', closeCase);
+    overlay.classList.add('open');
+    document.body.classList.add('no-scroll');
+  }
+  function closeCase(){
+    overlay.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+  document.querySelectorAll('.case-study-btn').forEach(btn=>{
+    btn.addEventListener('click', () => openCase(btn.dataset.case));
+  });
+  closeBtn.addEventListener('click', closeCase);
+  overlay.addEventListener('click', e => { if(e.target === overlay) closeCase(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && overlay.classList.contains('open')) closeCase(); });
 })();
 
 </script>
