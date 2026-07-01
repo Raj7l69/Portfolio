@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <title>Rajendra Singh — Offensive Security & VAPT</title>
 <meta name="description" content="Cybersecurity student specializing in VAPT, penetration testing, and offensive security. TryHackMe Top 4% Global.">
 <meta name="theme-color" content="#00E5FF">
@@ -16,16 +20,16 @@
 <meta property="og:title" content="Rajendra Singh — Offensive Security & VAPT">
 <meta property="og:description" content="Cybersecurity student · VAPT · Penetration Testing · TryHackMe Top 4% Global · Open to Internships">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://rajendra-singh.dev">
-<link rel="canonical" href="https://rajendra-singh.dev/">
-<meta property="og:image" content="https://rajendra-singh.dev/assets/og-banner.png">
+<meta property="og:url" content="https://raj7l69.github.io/Portfolio/">
+<link rel="canonical" href="https://raj7l69.github.io/Portfolio/">
+<meta property="og:image" content="https://raj7l69.github.io/Portfolio/assets/og-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Rajendra Singh — Offensive Security">
 <meta name="twitter:description" content="VAPT · Pentesting · TryHackMe Top 4% · Open to Internships">
-<meta name="twitter:image" content="https://rajendra-singh.dev/assets/og-banner.png">
+<meta name="twitter:image" content="https://raj7l69.github.io/Portfolio/assets/og-banner.png">
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -85,6 +89,8 @@
 .hacker-mode .tag-purple{background:rgba(0,204,51,.08);color:#00CC33;border-color:rgba(0,204,51,.2)}
 .hacker-mode #scroll-progress{background:linear-gradient(90deg,#00FF41,#00CC33,#00FF41)}
 
+.hacker-mode .pf-btn.active{background:rgba(0,255,65,.1);border-color:#00FF41;color:#00FF41;box-shadow:0 0 12px rgba(0,255,65,.15)}
+.hacker-mode .pf-btn:hover{border-color:#00FF41;color:#00FF41}
 .hacker-mode .currently-learning{background:rgba(0,255,65,.04);border-color:rgba(0,255,65,.15)}
 .hacker-mode .terminal-live,.hacker-mode .terminal-live span{color:#00FF41;background:#00FF41;box-shadow:0 0 8px #00FF41}
 .hacker-mode .skill-bar-fill{box-shadow:0 0 10px rgba(0,255,65,.6)}
@@ -382,6 +388,12 @@ section{padding:6rem 5%}
 /* PROJECTS */
 #projects{background:var(--card2)}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.5rem}
+.project-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.pf-btn{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .9rem;border-radius:5px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.pf-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.pf-btn.active{background:rgba(0,229,255,.1);border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.12)}
+.project-card{transition:opacity .3s,transform .3s}
+.project-card.hidden{opacity:0;pointer-events:none;position:absolute;visibility:hidden}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:all .3s;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .project-card::after{content:'';position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,rgba(0,229,255,.04),rgba(124,58,237,.04));opacity:0;transition:opacity .3s;pointer-events:none}
 .project-card:hover{border-color:rgba(0,229,255,.5);transform:translateY(-7px);box-shadow:0 0 35px rgba(0,229,255,.1),0 20px 56px rgba(0,0,0,.5)}
@@ -416,6 +428,7 @@ section{padding:6rem 5%}
 .writeup-title{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:.6rem;color:var(--text)}
 .writeup-desc{font-size:.82rem;color:#94A3B8;line-height:1.6;margin-bottom:1.2rem}
 .writeup-status{display:inline-block;font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-light);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);padding:.25rem .7rem;border-radius:100px}
+.writeup-status.in-progress{color:#4ADE80;background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3)}
 
 #certifications{background:var(--bg)}
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
@@ -456,6 +469,28 @@ section{padding:6rem 5%}
 .contact-wrapper{max-width:720px}
 .contact-desc{font-size:1rem;color:#94A3B8;line-height:1.75;margin-bottom:2.5rem}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem}
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem;align-items:start}
+@media(max-width:860px){.contact-split{grid-template-columns:1fr}}
+.contact-form-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden}
+.contact-form-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple-light));opacity:.7}
+.contact-form-title{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1.3rem}
+.form-group{margin-bottom:1rem}
+.form-label{display:block;font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.form-input,.form-textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:.65rem .9rem;color:var(--text);font-family:var(--font-mono);font-size:.8rem;transition:border-color .2s,box-shadow .2s;outline:none;resize:none}
+.form-input:focus,.form-textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.08)}
+.form-textarea{height:110px;line-height:1.6}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted);opacity:.6}
+.form-submit{width:100%;padding:.75rem;background:linear-gradient(135deg,var(--cyan),var(--purple-light));border:none;border-radius:7px;color:#000;font-family:var(--font-mono);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:.4rem}
+.form-submit:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,229,255,.25)}
+.form-submit:active{transform:translateY(0)}
+.form-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.form-msg{font-family:var(--font-mono);font-size:.72rem;text-align:center;margin-top:.7rem;padding:.5rem;border-radius:5px;display:none}
+.form-msg.success{color:#4ADE80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);display:block}
+.form-msg.error{color:#F87171;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);display:block}
+.hacker-mode .form-input,.hacker-mode .form-textarea{border-color:rgba(0,255,65,.2)}
+.hacker-mode .form-input:focus,.hacker-mode .form-textarea:focus{border-color:#00FF41;box-shadow:0 0 0 3px rgba(0,255,65,.08)}
+.hacker-mode .form-submit{background:linear-gradient(135deg,#00FF41,#00CC33);color:#000}
+.contact-links-wrap{display:flex;flex-direction:column;gap:.75rem}
 .contact-link{display:flex;align-items:center;gap:.8rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.3rem;text-decoration:none;color:var(--text);font-family:var(--font-mono);transition:all .25s;position:relative;overflow:hidden}
 .contact-link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.04),transparent);opacity:0;transition:opacity .25s}
 .contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);box-shadow:0 0 20px rgba(0,229,255,.15),0 8px 24px rgba(0,0,0,.3)}
@@ -815,10 +850,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Rajendra Singh",
-  "url": "https://rajendra-singh.dev",
+  "url": "https://raj7l69.github.io/Portfolio/",
   "jobTitle": "Cybersecurity Student & VAPT Specialist",
   "description": "Cybersecurity student specializing in VAPT, penetration testing, and offensive security. TryHackMe Top 4% Global.",
-  "knowsAbout": ["Penetration Testing", "Vulnerability Assessment", "Web Application Security", "Network Security", "Digital Forensics", "OSINT"],
+  "knowsAbout": ["Penetration Testing", "Vulnerability Assessment", "Web Application Security", "Network Security", "Intrusion Detection", "Endpoint Security", "USB Device Control", "OSINT", "Linux Privilege Escalation", "Python Security Tooling"],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
     "name": "Quantum University, Roorkee"
@@ -829,6 +864,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     "https://tryhackme.com/p/Ra.oneX"
   ]
 }
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G636TNGEHH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G636TNGEHH');
 </script>
 </head>
 <body>
@@ -944,7 +987,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <p class="hero-desc">Cyber Security student specializing in vulnerability assessment, penetration testing, and offensive security tooling. Hands-on with real-world VAPT, government cyber programs, and building open-source security tools.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">⚡ View Projects</a>
-      <a href="assets/Rajendra_Singh_Resume.pdf" download class="btn btn-outline">⬇ Download Resume</a>
+      <a href="assets/Rajendra_Singh_Resume.pdf" download class="btn btn-outline" onclick="if(typeof gtag!=='undefined')gtag('event','resume_download',{event_category:'Engagement',event_label:'Hero CTA'})">⬇ Download Resume</a>
       <a href="mailto:rajendrajra65@gmail.com" class="btn btn-outline">✉ Get In Touch</a>
     </div>
     <div class="currently-learning reveal">
@@ -959,7 +1002,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     </div>
     <div class="status-pills">
       <div class="status-pill"><span class="pill-dot green"></span><span class="pill-label">Status:</span><span class="pill-val">Open to Work</span></div>
-      <div class="status-pill"><span class="pill-dot yellow"></span><span class="pill-label">Currently:</span><span class="pill-val">CTF Hunting · ZeroTrace</span></div>
+      <div class="status-pill"><span class="pill-dot yellow"></span><span class="pill-label">Currently:</span><span class="pill-val">CTF Hunting · ZeroTrace · SentinelUSB</span></div>
       <div class="status-pill"><span class="pill-dot cyan"></span><span class="pill-label">THM:</span><span class="pill-val">Top 4% Global</span></div>
       <div class="status-pill"><span class="pill-dot" style="background:#9FEF00"></span><span class="pill-label">HTB:</span><span class="pill-val">Active</span></div>
       <div class="status-pill"><span class="pill-dot" style="background:#A78BFA;animation:pulse 1s infinite"></span><span class="pill-label">Hacking for:</span><span class="pill-val" id="days-counter">...</span></div>
@@ -977,7 +1020,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="ach-item reveal"><span class="ach-num" data-target="90" data-suffix="+">0</span><span class="ach-label">THM Rooms<br>Completed</span></div>
     <div class="ach-item reveal"><span class="ach-num" data-target="7">0</span><span class="ach-label">Months of<br>Internship</span></div>
     <div class="ach-item reveal"><span class="ach-num" data-target="4">0</span><span class="ach-label">THM Learning<br>Paths Done</span></div>
-    <div class="ach-item reveal"><span class="ach-num" data-target="2">0</span><span class="ach-label">Open Source<br>Projects</span></div>
+    <div class="ach-item reveal"><span class="ach-num" data-target="3">0</span><span class="ach-label">Open Source<br>Security Tools</span></div>
   </div>
 </div>
 
@@ -1064,6 +1107,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
     <div class="skill-card reveal"><div class="skill-card-icon">⚙️</div><div class="skill-card-title">Languages & Scripting</div><div class="skill-tags"><span class="tag tag-gray">Python</span><span class="tag tag-gray">Bash</span><span class="tag tag-gray">Linux</span><span class="tag tag-gray">Docker</span><span class="tag tag-gray">YAML</span></div></div>
     <div class="skill-card reveal"><div class="skill-card-icon">🔍</div><div class="skill-card-title">Testing Methodology</div><div class="skill-tags"><span class="tag tag-purple">VAPT</span><span class="tag tag-purple">Ethical Hacking</span><span class="tag tag-purple">Reconnaissance</span><span class="tag tag-purple">Linux Enumeration</span><span class="tag tag-purple">Privilege Escalation</span></div></div>
     <div class="skill-card reveal"><div class="skill-card-icon">🤖</div><div class="skill-card-title">AI & Emerging</div><div class="skill-tags"><span class="tag tag-cyan">LLM Security</span><span class="tag tag-cyan">Prompt Injection</span><span class="tag tag-cyan">AI Red Teaming</span><span class="tag tag-cyan">Adversarial ML</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🔌</div><div class="skill-card-title">Endpoint Security & DLP</div><div class="skill-tags"><span class="tag tag-purple">USB Device Control</span><span class="tag tag-purple">Hardware Fingerprinting</span><span class="tag tag-purple">Insider Threat Detection</span><span class="tag tag-purple">Data Loss Prevention</span><span class="tag tag-purple">WMI</span><span class="tag tag-purple">Windows Internals</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">🕵️</div><div class="skill-card-title">OSINT & Recon</div><div class="skill-tags"><span class="tag tag-cyan">Shodan</span><span class="tag tag-cyan">theHarvester</span><span class="tag tag-cyan">Google Dorks</span><span class="tag tag-cyan">WHOIS</span><span class="tag tag-cyan">DNSdumpster</span><span class="tag tag-cyan">Maltego</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-icon">📋</div><div class="skill-card-title">Security Frameworks</div><div class="skill-tags"><span class="tag tag-gray">MITRE ATT&CK</span><span class="tag tag-gray">Cyber Kill Chain</span><span class="tag tag-gray">PTES</span><span class="tag tag-gray">OWASP</span><span class="tag tag-gray">NIST</span><span class="tag tag-gray">Diamond Model</span></div></div>
   </div>
   <div class="skill-bars-wrap">
     <div class="skill-bars-title">Tool Proficiency</div>
@@ -1075,6 +1121,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div class="skill-bar-row" data-skill="SQLMap"><span class="skill-bar-label">SQLMap</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="75"></div></div><span class="skill-bar-pct">75%</span><span class="skill-bar-level">Proficient</span></div>
       <div class="skill-bar-row" data-skill="Wireshark"><span class="skill-bar-label">Wireshark</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="72"></div></div><span class="skill-bar-pct">72%</span><span class="skill-bar-level">Proficient</span></div>
       <div class="skill-bar-row" data-skill="Linux"><span class="skill-bar-label">Linux / Bash</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="80"></div></div><span class="skill-bar-pct">80%</span><span class="skill-bar-level">Advanced</span></div>
+      <div class="skill-bar-row" data-skill="Gobuster"><span class="skill-bar-label">Gobuster</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="78"></div></div><span class="skill-bar-pct">78%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="Scapy"><span class="skill-bar-label">Scapy</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="74"></div></div><span class="skill-bar-pct">74%</span><span class="skill-bar-level">Proficient</span></div>
+      <div class="skill-bar-row" data-skill="WMI"><span class="skill-bar-label">WMI / Windows</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="68"></div></div><span class="skill-bar-pct">68%</span><span class="skill-bar-level">Working</span></div>
     </div>
   </div>
 </section>
@@ -1138,8 +1187,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="section-label">04 / Build</div>
   <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
   <p style="font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin:-1rem 0 1.8rem;letter-spacing:.03em">📄 Click <strong style="color:var(--purple-light)">"Read Case Study"</strong> on any project below for a full problem → approach → result breakdown</p>
+  <div class="project-filters">
+    <button class="pf-btn active" data-filter="all">⚡ All</button>
+    <button class="pf-btn" data-filter="defensive">🛡️ Defensive</button>
+    <button class="pf-btn" data-filter="offensive">🗡️ Offensive</button>
+    <button class="pf-btn" data-filter="endpoint">🔌 Endpoint</button>
+  </div>
   <div class="projects-grid">
-    <div class="project-card tilt-card reveal">
+    <div class="project-card tilt-card reveal" data-category="defensive">
       <div class="project-badges-row">
         <div class="project-badge">Network Security</div>
         <div class="project-status in-progress">🟡 In Progress</div>
@@ -1154,26 +1209,26 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         <li>Local AI (Ollama/llama3) for threat explanation; Isolation Forest on CICIDS2017 targeting 94%+ accuracy</li>
       </ul>
       <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Scapy</span><span class="tag tag-cyan">FastAPI</span><span class="tag tag-gray">Docker</span><span class="tag tag-gray">SQLite/PostgreSQL</span><span class="tag tag-purple">Ollama</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="zerotrace">📄 Read Case Study →</button></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69/ZeroTrace" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="zerotrace">📄 Read Case Study →</button></div>
     </div>
-    <div class="project-card tilt-card reveal">
+    <div class="project-card tilt-card reveal" data-category="offensive">
       <div class="project-badges-row">
         <div class="project-badge purple">Offensive Tool</div>
         <div class="project-status completed">✅ Completed</div>
       </div>
-      <div class="project-name">Linux PrivEsc Toolkit</div>
-      <div class="project-sub">Privilege Escalation Automation Framework</div>
-      <div class="project-desc">Automated enumeration toolkit for Linux privilege escalation — eliminates repetitive manual work during penetration testing and surfaces exploitable vectors missed in manual audits.</div>
+      <div class="project-name">Linux PrivEsc Audit Toolkit</div>
+      <div class="project-sub">Detection-Only Privilege Escalation Auditing Tool</div>
+      <div class="project-desc">Detection-only security auditing tool that automates Linux privilege escalation enumeration — built to help defenders identify misconfigurations before attackers do, with zero exploitation or malicious action.</div>
       <ul class="project-highlights">
-        <li>Detects SUID/SGID binaries, weak permissions, and sudo misconfigurations automatically</li>
-        <li>Enumerates cron jobs, writable paths, services, and Linux capabilities</li>
-        <li>Structured reports with severity levels, affected paths, and remediation steps</li>
-        <li>Modular architecture — easy to extend with new detection techniques</li>
+        <li>9 automated checks — SUID/SGID binaries, world-writable paths, sudo NOPASSWD rules, cron jobs, Linux capabilities, kernel version, and systemd service review</li>
+        <li>Flags risky binaries (find, vim, perl, bash) and dangerous sudo rules that represent real PrivEsc paths</li>
+        <li>Structured audit report generated on completion — suitable for defender handoff and remediation tracking</li>
+        <li>Detection-only by design: surfaces attacker enumeration paths without executing any exploit</li>
       </ul>
-      <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Bash</span><span class="tag tag-gray">Linux</span></div>
-      <div class="project-links"><a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="privesc">📄 Read Case Study →</button></div>
+      <div class="project-tech"><span class="tag tag-cyan">Python</span><span class="tag tag-cyan">Bash</span><span class="tag tag-gray">Linux</span><span class="tag tag-gray">Kali / Ubuntu</span></div>
+      <div class="project-links"><a href="https://github.com/Raj7l69/Linux-Privilege-Escalation-Audit-Toolkit" target="_blank" rel="noopener" class="project-link">GitHub →</a><button class="case-study-btn" data-case="privesc">📄 Read Case Study →</button></div>
     </div>
-    <div class="project-card tilt-card reveal">
+    <div class="project-card tilt-card reveal" data-category="endpoint">
       <div class="project-badges-row">
         <div class="project-badge">Endpoint Security</div>
         <div class="project-status completed">✅ Completed</div>
@@ -1202,26 +1257,51 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
   <div class="writeups-wrap reveal">
     <div class="writeup-card coming-soon">
       <span class="writeup-icon">📝</span>
-      <div class="writeup-title">Documenting Active Solves</div>
-      <div class="writeup-desc">Detailed writeups of TryHackMe rooms and HackTheBox machines — methodology, enumeration, exploitation, and lessons learned. Publishing soon.</div>
+      <div class="writeup-title">CTF Room Writeups</div>
+      <div class="writeup-desc">Step-by-step TryHackMe room breakdowns — recon, enumeration, exploitation, and post-exploitation. Full methodology, not just flags.</div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem">
+        <span class="tag tag-cyan" style="font-size:.6rem">Nmap</span>
+        <span class="tag tag-cyan" style="font-size:.6rem">Gobuster</span>
+        <span class="tag tag-cyan" style="font-size:.6rem">Burp Suite</span>
+        <span class="tag tag-cyan" style="font-size:.6rem">PrivEsc</span>
+        <span class="tag tag-gray" style="font-size:.6rem">TryHackMe</span>
+      </div>
       <span class="writeup-status">Coming Soon</span>
     </div>
     <div class="writeup-card coming-soon">
       <span class="writeup-icon">🔬</span>
       <div class="writeup-title">VAPT Case Notes</div>
-      <div class="writeup-desc">Breakdown of vulnerability classes encountered during practice and internship engagements — root cause, impact, and remediation.</div>
+      <div class="writeup-desc">Vulnerability classes from internship and practice engagements — root cause, CVSS impact, and remediation. Amroha Police & Unified Mentor sourced.</div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem">
+        <span class="tag tag-purple" style="font-size:.6rem">SQLi</span>
+        <span class="tag tag-purple" style="font-size:.6rem">XSS</span>
+        <span class="tag tag-purple" style="font-size:.6rem">Auth Bypass</span>
+        <span class="tag tag-purple" style="font-size:.6rem">OWASP Top 10</span>
+      </div>
       <span class="writeup-status">Coming Soon</span>
     </div>
     <div class="writeup-card coming-soon">
       <span class="writeup-icon">🐛</span>
       <div class="writeup-title">Bug Hunting Approach & Findings</div>
-      <div class="writeup-desc">Methodology, target recon, and findings from ongoing bug bounty hunting — scope analysis, vulnerability discovery, and disclosure notes.</div>
-      <span class="writeup-status">Coming Soon</span>
+      <div class="writeup-desc">Recon methodology, target scoping, and disclosed findings from bug bounty programs — OSINT, subdomain enum, and vulnerability discovery chain.</div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem">
+        <span class="tag tag-cyan" style="font-size:.6rem">Shodan</span>
+        <span class="tag tag-cyan" style="font-size:.6rem">theHarvester</span>
+        <span class="tag tag-cyan" style="font-size:.6rem">Google Dorks</span>
+        <span class="tag tag-gray" style="font-size:.6rem">Bug Bounty</span>
+      </div>
+      <span class="writeup-status in-progress">🟢 In Progress</span>
     </div>
     <div class="writeup-card coming-soon">
       <span class="writeup-icon">🏴</span>
-      <div class="writeup-title">CTF Methodology</div>
-      <div class="writeup-desc">Personal recon-to-root checklists and tool workflows refined across 90+ TryHackMe rooms and ongoing HTB practice.</div>
+      <div class="writeup-title">CTF Methodology Cheatsheet</div>
+      <div class="writeup-desc">Personal recon-to-root checklists and tool workflows refined across 90+ TryHackMe rooms — Nmap flags, Gobuster wordlists, shell stabilization, PrivEsc quick-wins.</div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem">
+        <span class="tag tag-gray" style="font-size:.6rem">Recon</span>
+        <span class="tag tag-gray" style="font-size:.6rem">Enumeration</span>
+        <span class="tag tag-gray" style="font-size:.6rem">Shell Tricks</span>
+        <span class="tag tag-gray" style="font-size:.6rem">PrivEsc</span>
+      </div>
       <span class="writeup-status">Coming Soon</span>
     </div>
   </div>
@@ -1294,12 +1374,41 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       </div>
     </div>
     <p class="contact-desc">Open to internships, security assessments, CTF collaborations, and open-source contributions. Reach out for anything in the offensive security or threat landscape space.</p>
-    <div class="contact-grid">
-      <a href="mailto:rajendrajra65@gmail.com" class="contact-link" data-copy="rajendrajra65@gmail.com"><span class="contact-icon">✉️</span><div><span class="contact-label">Email — click to copy</span><span class="contact-val">rajendrajra65@gmail.com</span></div></a>
-      <a href="tel:+918302678483" class="contact-link" data-copy="+918302678483"><span class="contact-icon">📞</span><div><span class="contact-label">Phone — click to copy</span><span class="contact-val">+91 83026 78483</span></div></a>
-      <a href="https://linkedin.com/in/rajendra-singh01" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">💼</span><div><span class="contact-label">LinkedIn</span><span class="contact-val">rajendra-singh01</span></div></a>
-      <a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">🐙</span><div><span class="contact-label">GitHub</span><span class="contact-val">Raj7l69</span></div></a>
-      <a href="https://tryhackme.com/p/Ra.oneX" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">⚔️</span><div><span class="contact-label">TryHackMe</span><span class="contact-val">Ra.oneX · Top 4%</span></div></a>
+    <div class="contact-split">
+      <!-- CONTACT FORM -->
+      <div class="contact-form-wrap reveal">
+        <div class="contact-form-title">// Send a Message</div>
+        <form id="contact-form" action="https://formspree.io/f/xkolqjlg" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="cf-name">Name</label>
+            <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-email">Email</label>
+            <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-subject">Subject</label>
+            <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Internship · Collab · Hire · CTF">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-msg">Message</label>
+            <textarea class="form-textarea" id="cf-msg" name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button class="form-submit" type="submit" id="cf-submit">⚡ Send Message</button>
+          <div class="form-msg" id="cf-msg-status"></div>
+        </form>
+      </div>
+      <!-- CONTACT LINKS -->
+      <div class="contact-links-wrap">
+        <div class="contact-grid" style="grid-template-columns:1fr;gap:.75rem">
+          <a href="mailto:rajendrajra65@gmail.com" class="contact-link" data-copy="rajendrajra65@gmail.com"><span class="contact-icon">✉️</span><div><span class="contact-label">Email — click to copy</span><span class="contact-val">rajendrajra65@gmail.com</span></div></a>
+          <a href="tel:+918302678483" class="contact-link" data-copy="+918302678483"><span class="contact-icon">📞</span><div><span class="contact-label">Phone — click to copy</span><span class="contact-val">+91 83026 78483</span></div></a>
+          <a href="https://linkedin.com/in/rajendra-singh01" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">💼</span><div><span class="contact-label">LinkedIn</span><span class="contact-val">rajendra-singh01</span></div></a>
+          <a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">🐙</span><div><span class="contact-label">GitHub</span><span class="contact-val">Raj7l69</span></div></a>
+          <a href="https://tryhackme.com/p/Ra.oneX" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">⚔️</span><div><span class="contact-label">TryHackMe</span><span class="contact-val">Ra.oneX · Top 4%</span></div></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1662,7 +1771,7 @@ Status  : Open to opportunities`,
 [NETWORK]    Scapy | Wireshark | iptables | FastAPI
 [WEB]        SQLi | XSS | OWASP Top 10 | Auth Flaws
 [SCRIPTING]  Python | Bash | Linux | Docker | YAML`,
-  'ls projects/': () => `ZeroTrace/          Linux-PrivEsc-Toolkit/`,
+  'ls projects/': () => `ZeroTrace/          Linux-PrivEsc-Audit-Toolkit/          SentinelUSB/`,
   ctf: () => `<span style="color:#00E5FF">CTF & Practice Platforms:</span>
   TryHackMe  → Ra.oneX · Top 4% Global · 90+ rooms completed
   HackTheBox → Active · Machine & challenge practice
@@ -2072,6 +2181,61 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
   });
 })();
 
+/* PROJECT FILTER TABS */
+(function(){
+  const btns = document.querySelectorAll('.pf-btn');
+  const cards = document.querySelectorAll('.projects-grid .project-card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        if(filter === 'all' || card.dataset.category === filter){
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+})();
+
+/* CONTACT FORM — Formspree AJAX */
+(function(){
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('cf-submit');
+  const msg = document.getElementById('cf-msg-status');
+  if(!form) return;
+  form.addEventListener('submit', async(e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = '⏳ Sending...';
+    msg.className = 'form-msg';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if(res.ok){
+        msg.textContent = '✅ Message sent! I\'ll get back to you soon.';
+        msg.className = 'form-msg success';
+        form.reset();
+        // Track analytics event
+        if(typeof gtag !== 'undefined') gtag('event','contact_form_submit',{event_category:'Contact',event_label:'Formspree'});
+      } else {
+        throw new Error('Server error');
+      }
+    } catch(err){
+      msg.textContent = '❌ Something went wrong. Try emailing me directly.';
+      msg.className = 'form-msg error';
+    }
+    btn.disabled = false;
+    btn.textContent = '⚡ Send Message';
+  });
+})();
+
 /* SKILL BAR CROSS-LINK — click a tool to jump to where it's used */
 (function(){
   document.querySelectorAll('.skill-bar-row[data-skill]').forEach(row=>{
@@ -2302,7 +2466,7 @@ document.addEventListener('visibilitychange', () => {
       status: 'Completed', statusClass: 'completed',
       title: 'Linux PrivEsc Toolkit',
       sub: 'Privilege Escalation Automation Framework',
-      problem: 'During penetration testing engagements, privilege escalation enumeration on Linux is repetitive — checking SUID/SGID binaries, sudo misconfigurations, cron jobs, and writable paths manually wastes time better spent on exploitation.',
+      problem: 'Linux systems commonly suffer from misconfigurations — improper file permissions, unsafe SUID/SGID binaries, misconfigured cron jobs, insecure sudo rules — that represent real privilege escalation paths. Manual auditing of these is time-consuming, error-prone, and easy to miss. A tool was needed that automates enumeration safely and generates a structured defender-ready report without executing any exploit.',
       approach: [
         'Automated detection of SUID/SGID binaries and cross-referenced known privilege escalation techniques against them',
         'Built enumeration for sudo misconfigurations (NOPASSWD entries, dangerous binaries in sudoers)',

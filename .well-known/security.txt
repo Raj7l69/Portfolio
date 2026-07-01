@@ -1,0 +1,12 @@
+# Security Policy for raj7l69.github.io/Portfolio
+# If you find a vulnerability in this site, please report it responsibly.
+
+Contact: mailto:rajendrajra65@gmail.com
+Preferred-Languages: en, hi
+Canonical: https://raj7l69.github.io/Portfolio/.well-known/security.txt
+Expires: 2027-01-01T00:00:00.000Z
+
+# About the owner
+# Rajendra Singh — Cybersecurity Student & VAPT Specialist
+# TryHackMe: https://tryhackme.com/p/Ra.oneX
+# GitHub: https://github.com/Raj7l69
