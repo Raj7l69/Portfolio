@@ -344,6 +344,80 @@ section{padding:6rem 5%}
 
 /* SKILL BARS */
 .skill-bars-wrap{margin-top:3.5rem;max-width:980px}
+.radar-wrap{margin-top:3.5rem;display:flex;flex-direction:column;align-items:center}
+
+/* KILL CHAIN — full 7-step Lockheed Martin model */
+.killchain-wrap{width:100%}
+.kc-title{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.2rem}
+.killchain-steps{display:grid;grid-template-columns:repeat(7,1fr);gap:.6rem;width:100%}
+.kc-step{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.9rem .6rem;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.kc-step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.kc-step:hover::before,.kc-step.active::before{transform:scaleX(1)}
+.kc-step:hover,.kc-step.active{border-color:rgba(0,229,255,.4);box-shadow:0 4px 20px rgba(0,229,255,.08)}
+.kc-step.done{border-color:rgba(0,229,255,.25)}
+.kc-num{font-family:var(--font-mono);font-size:.58rem;color:var(--muted);margin-bottom:.4rem}
+.kc-icon{font-size:1.4rem;margin-bottom:.4rem;display:block}
+.kc-label{font-family:var(--font-display);font-weight:600;font-size:.75rem;color:var(--text);margin-bottom:.35rem;line-height:1.2}
+.kc-tools{font-family:var(--font-mono);font-size:.56rem;color:var(--muted);line-height:1.6}
+.kc-step:hover .kc-tools,.kc-step.active .kc-tools{color:#94A3B8}
+.kc-connector{display:none}
+
+@media(max-width:900px){
+  .killchain-steps{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:600px){
+  .killchain-steps{grid-template-columns:repeat(2,1fr)}
+  .kc-step{padding:.8rem .5rem}
+}
+@media(max-width:360px){
+  .killchain-steps{grid-template-columns:1fr 1fr}
+  .kc-label{font-size:.68rem}
+}
+
+/* TOOL ARSENAL — grid card layout (replaces broken hex) */
+.tool-arsenal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:.6rem;width:100%}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem .5rem;text-align:center;transition:all .25s;cursor:default;display:flex;flex-direction:column;align-items:center;gap:.3rem}
+.tool-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,229,255,.1)}
+.tool-card.cat-web:hover{border-color:var(--cyan);box-shadow:0 6px 20px rgba(0,229,255,.1)}
+.tool-card.cat-network:hover{border-color:#4ADE80;box-shadow:0 6px 20px rgba(74,222,128,.1)}
+.tool-card.cat-exploit:hover{border-color:#F87171;box-shadow:0 6px 20px rgba(248,113,113,.1)}
+.tool-card.cat-scripting:hover{border-color:var(--purple-light);box-shadow:0 6px 20px rgba(167,139,250,.1)}
+.tool-card.cat-forensics:hover{border-color:#FBBF24;box-shadow:0 6px 20px rgba(251,191,36,.1)}
+.tool-card-icon{font-size:1.3rem}
+.tool-card-name{font-family:var(--font-mono);font-size:.62rem;color:var(--text);font-weight:600;text-align:center;line-height:1.3}
+.tool-card-cat{font-family:var(--font-mono);font-size:.52rem;color:var(--muted)}
+.tool-card:hover .tool-card-cat{color:var(--cyan)}
+.tool-arsenal-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.ta-legend-item{display:flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.65rem;color:var(--muted)}
+.ta-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+@media(max-width:480px){
+  .tool-arsenal-grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:.45rem}
+  .tool-card{padding:.65rem .4rem}
+  .tool-card-icon{font-size:1.1rem}
+  .tool-card-name{font-size:.56rem}
+}
+
+/* CTF HEATMAP */
+.heatmap-wrap{display:flex;flex-direction:column;gap:.8rem;overflow-x:auto;padding-bottom:.5rem}
+.heatmap-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.heatmap-count{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+.heatmap-legend{display:flex;align-items:center;gap:.35rem;font-family:var(--font-mono);font-size:.6rem;color:var(--muted)}
+.hm-cell{width:10px;height:10px;border-radius:2px;display:inline-block}
+.hm-leg-label{color:var(--muted)}
+.heatmap-grid{display:flex;gap:3px;align-items:flex-start}
+.heatmap-col{display:flex;flex-direction:column;gap:3px}
+.heatmap-cell{width:13px;height:13px;border-radius:2px;transition:transform .1s,box-shadow .1s;cursor:default}
+.heatmap-cell:hover{transform:scale(1.4);box-shadow:0 0 8px rgba(0,229,255,.5);z-index:1;position:relative}
+.heatmap-months{display:flex;gap:0;font-family:var(--font-mono);font-size:.6rem;color:var(--muted);margin-top:.2rem}
+.hm-month-label{flex:1;text-align:left}
+.radar-container{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.radar-legend{display:flex;gap:1.5rem;justify-content:center}
+.radar-legend-item{display:flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.68rem;color:var(--muted)}
+.radar-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.radar-dot.cyan{background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.radar-dot.purple{background:var(--purple-light);box-shadow:0 0 6px var(--purple-light)}
+@media(max-width:500px){#radarChart{width:300px!important;height:300px!important}}
 .skill-bars-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--muted);margin-bottom:1.5rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem}
 .skill-bars-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:pulse 2s ease infinite}
 .skill-bars{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem 2.2rem}
@@ -1129,6 +1203,18 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       <div class="skill-bar-row" data-skill="WMI"><span class="skill-bar-label">WMI / Windows</span><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="68"></div></div><span class="skill-bar-pct">68%</span><span class="skill-bar-level">Working</span></div>
     </div>
   </div>
+
+  <!-- RADAR CHART -->
+  <div class="radar-wrap reveal">
+    <div class="skill-bars-title" style="justify-content:center;margin-bottom:2rem">Offensive Skill Radar</div>
+    <div class="radar-container">
+      <canvas id="radarChart" width="420" height="420"></canvas>
+      <div class="radar-legend">
+        <div class="radar-legend-item"><span class="radar-dot cyan"></span>Current Level</div>
+        <div class="radar-legend-item"><span class="radar-dot purple"></span>Target (6 months)</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -1180,6 +1266,93 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
         </ul>
       </div>
     </div>
+  </div>
+
+  <!-- ATTACK KILL CHAIN -->
+  <div class="killchain-wrap reveal" style="margin-top:4rem">
+    <div class="skill-bars-title" style="margin-bottom:1.5rem">⚔️ Cyber Kill Chain — Lockheed Martin Model</div>
+    <div class="killchain-steps" id="killchain">
+      <div class="kc-step" data-step="0">
+        <div class="kc-num">01</div>
+        <div class="kc-icon">🔍</div>
+        <div class="kc-label">Reconnaissance</div>
+        <div class="kc-tools">Nmap · Shodan · OSINT · theHarvester · Google Dorks</div>
+      </div>
+      <div class="kc-step" data-step="1">
+        <div class="kc-num">02</div>
+        <div class="kc-icon">🔧</div>
+        <div class="kc-label">Weaponization</div>
+        <div class="kc-tools">Metasploit · msfvenom · Custom Payloads · Exploit-DB</div>
+      </div>
+      <div class="kc-step" data-step="2">
+        <div class="kc-num">03</div>
+        <div class="kc-icon">📤</div>
+        <div class="kc-label">Delivery</div>
+        <div class="kc-tools">Phishing · Web App · SQLi · XSS · File Upload</div>
+      </div>
+      <div class="kc-step" data-step="3">
+        <div class="kc-num">04</div>
+        <div class="kc-icon">💥</div>
+        <div class="kc-label">Exploitation</div>
+        <div class="kc-tools">Burp Suite · SQLMap · Buffer Overflow · CVE Exploit</div>
+      </div>
+      <div class="kc-step" data-step="4">
+        <div class="kc-num">05</div>
+        <div class="kc-icon">⚙️</div>
+        <div class="kc-label">Installation</div>
+        <div class="kc-tools">Backdoors · Web Shells · Cron Jobs · Registry Keys</div>
+      </div>
+      <div class="kc-step" data-step="5">
+        <div class="kc-num">06</div>
+        <div class="kc-icon">📡</div>
+        <div class="kc-label">Command & Control</div>
+        <div class="kc-tools">C2 Frameworks · Reverse Shells · netcat · Tunneling</div>
+      </div>
+      <div class="kc-step" data-step="6">
+        <div class="kc-num">07</div>
+        <div class="kc-icon">🎯</div>
+        <div class="kc-label">Actions on Objectives</div>
+        <div class="kc-tools">Data Exfil · Pivoting · Privilege Abuse · Reporting</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS TOOL ARSENAL -->
+  <div class="hex-section reveal" style="margin-top:4rem">
+    <div class="skill-bars-title" style="margin-bottom:1.2rem">🔷 Tool Arsenal</div>
+    <div class="tool-arsenal-legend">
+      <div class="ta-legend-item"><span class="ta-legend-dot" style="background:#00E5FF"></span>Web</div>
+      <div class="ta-legend-item"><span class="ta-legend-dot" style="background:#4ADE80"></span>Network</div>
+      <div class="ta-legend-item"><span class="ta-legend-dot" style="background:#F87171"></span>Exploit</div>
+      <div class="ta-legend-item"><span class="ta-legend-dot" style="background:#A78BFA"></span>Scripting</div>
+      <div class="ta-legend-item"><span class="ta-legend-dot" style="background:#FBBF24"></span>Forensics</div>
+    </div>
+    <div class="tool-arsenal-grid" id="hexGrid" style="margin-top:.9rem"></div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CTF HEATMAP -->
+<section id="ctf-heatmap-section" style="background:var(--card2);padding:4rem 5%">
+  <div class="section-label">03.5 / Activity</div>
+  <h2 class="section-title">Hacking <span class="accent">Activity</span></h2>
+  <div class="heatmap-wrap reveal">
+    <div class="heatmap-meta">
+      <span class="heatmap-count" id="heatmapTotal"></span>
+      <span class="heatmap-legend">
+        <span class="hm-leg-label">Less</span>
+        <span class="hm-cell" style="background:var(--card)"></span>
+        <span class="hm-cell" style="background:rgba(0,229,255,.2)"></span>
+        <span class="hm-cell" style="background:rgba(0,229,255,.45)"></span>
+        <span class="hm-cell" style="background:rgba(0,229,255,.7)"></span>
+        <span class="hm-cell" style="background:var(--cyan)"></span>
+        <span class="hm-leg-label">More</span>
+      </span>
+    </div>
+    <div class="heatmap-grid" id="heatmapGrid"></div>
+    <div class="heatmap-months" id="heatmapMonths"></div>
   </div>
 </section>
 
@@ -2203,6 +2376,448 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
       });
     });
   });
+})();
+
+/* RADAR CHART */
+(function(){
+  const canvas = document.getElementById('radarChart');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const skills = [
+    { label: 'Web App\nPentesting', current: 82, target: 92 },
+    { label: 'Network\nRecon',      current: 85, target: 92 },
+    { label: 'Linux\nPrivEsc',      current: 80, target: 90 },
+    { label: 'Endpoint\nSecurity',  current: 72, target: 85 },
+    { label: 'OSINT\n& Recon',      current: 75, target: 88 },
+    { label: 'Scripting\n& Tooling',current: 78, target: 88 },
+  ];
+
+  const N = skills.length;
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const R  = Math.min(cx, cy) * 0.58;
+  const levels = 5;
+  let animPct = 0;
+  let raf;
+  let hoveredIdx = -1;
+  let pulseT = 0;
+
+  function getThemeColors(){
+    const isHacker = document.body.classList.contains('hacker-mode');
+    const isLight  = document.body.classList.contains('light-mode');
+    return {
+      cyan:   isHacker ? '#00FF41' : (isLight ? '#0891B2' : '#00E5FF'),
+      purple: isHacker ? '#00CC33' : '#A78BFA',
+      grid:   isLight  ? 'rgba(0,0,0,0.09)' : 'rgba(255,255,255,0.08)',
+      label:  isLight  ? '#475569' : '#94A3B8',
+      labelHover: isLight ? '#111' : '#fff',
+      glowCyan: isHacker ? 'rgba(0,255,65,' : 'rgba(0,229,255,',
+    };
+  }
+
+  function angle(i){ return (Math.PI * 2 * i / N) - Math.PI / 2; }
+  function point(i, r){ return { x: cx + r * Math.cos(angle(i)), y: cy + r * Math.sin(angle(i)) }; }
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function draw(pct){
+    const ep = easeOutCubic(Math.min(pct, 1));
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const C = getThemeColors();
+
+    // Outer ambient glow ring
+    const outerGlow = ctx.createRadialGradient(cx, cy, R * 0.8, cx, cy, R * 1.35);
+    outerGlow.addColorStop(0, 'transparent');
+    outerGlow.addColorStop(0.6, C.glowCyan + '0.03)');
+    outerGlow.addColorStop(1, 'transparent');
+    ctx.fillStyle = outerGlow;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * 1.35, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Grid rings with level values
+    for(let l = 1; l <= levels; l++){
+      const r = R * l / levels;
+      ctx.beginPath();
+      for(let i = 0; i < N; i++){
+        const p = point(i, r);
+        i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = l === levels ? C.glowCyan + '0.18)' : C.grid;
+      ctx.lineWidth = l === levels ? 1.2 : 0.8;
+      ctx.stroke();
+      if(l % 2 === 0){
+        ctx.fillStyle = C.grid.replace('0.08)', '0.04)').replace('0.09)', '0.03)');
+        ctx.fill();
+      }
+    }
+
+    // Spokes
+    for(let i = 0; i < N; i++){
+      const p = point(i, R);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(p.x, p.y);
+      ctx.strokeStyle = C.grid;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+
+    // Target polygon (dashed)
+    ctx.beginPath();
+    for(let i = 0; i < N; i++){
+      const val = skills[i].target / 100;
+      const p = point(i, R * val * ep);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.closePath();
+    ctx.setLineDash([4, 5]);
+    ctx.strokeStyle = C.purple;
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = 0.7;
+    ctx.stroke();
+    ctx.fillStyle = C.purple.includes('#A78BFA') ? 'rgba(167,139,250,0.06)' : C.purple.includes('#00CC33') ? 'rgba(0,204,51,0.06)' : 'rgba(8,145,178,0.06)';
+    ctx.fill();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+
+    // Current polygon (cyan)
+    ctx.beginPath();
+    for(let i = 0; i < N; i++){
+      const val = skills[i].current / 100;
+      const p = point(i, R * val * ep);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = C.cyan;
+    ctx.lineWidth = 2.2;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = C.cyan;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+    grad.addColorStop(0, C.glowCyan + '0.22)');
+    grad.addColorStop(1, C.glowCyan + '0.02)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Data point dots with pulse on hovered
+    for(let i = 0; i < N; i++){
+      const val = skills[i].current / 100;
+      const p = point(i, R * val * ep);
+      const isHov = hoveredIdx === i;
+      const pulse = isHov ? 4 + Math.sin(pulseT * 0.15) * 2 : 4.5;
+
+      // Glow ring on hover
+      if(isHov){
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, pulse + 7, 0, Math.PI * 2);
+        ctx.fillStyle = C.glowCyan + '0.15)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, pulse + 4, 0, Math.PI * 2);
+        ctx.fillStyle = C.glowCyan + '0.25)';
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, pulse, 0, Math.PI * 2);
+      ctx.fillStyle = isHov ? '#fff' : C.cyan;
+      ctx.shadowBlur = isHov ? 16 : 8;
+      ctx.shadowColor = C.cyan;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Value % label near each dot
+      if(ep >= 0.95){
+        const lp = point(i, R * val + 18);
+        ctx.fillStyle = isHov ? C.cyan : C.glowCyan + '0.8)';
+        ctx.font = `bold 10px JetBrains Mono, monospace`;
+        ctx.textAlign = 'center';
+        ctx.fillText(skills[i].current + '%', lp.x, lp.y + 4);
+      }
+    }
+
+    // Labels
+    for(let i = 0; i < N; i++){
+      const p = point(i, R + 36);
+      const isHov = hoveredIdx === i;
+      const lines = skills[i].label.split('\n');
+      ctx.fillStyle = isHov ? C.labelHover : C.label;
+      ctx.font = `${isHov ? 'bold' : ''} 11px JetBrains Mono, monospace`;
+      ctx.textAlign = 'center';
+      lines.forEach((line, li) => {
+        ctx.fillText(line, p.x, p.y + li * 14 - (lines.length - 1) * 7);
+      });
+    }
+
+    // Hover tooltip
+    if(hoveredIdx >= 0 && ep >= 0.95){
+      const s = skills[hoveredIdx];
+      const val = s.current / 100;
+      const tp = point(hoveredIdx, R * val);
+      const tx = Math.min(Math.max(tp.x, 70), canvas.width - 70);
+      const ty = tp.y > cy ? tp.y - 52 : tp.y + 12;
+      const txt = `${s.label.replace('\n',' ')}`;
+      const txt2 = `Current: ${s.current}%  Target: ${s.target}%`;
+      ctx.fillStyle = 'rgba(3,7,18,0.92)';
+      ctx.strokeStyle = C.cyan;
+      ctx.lineWidth = 1;
+      const tw = 170;
+      roundRect(ctx, tx - tw/2, ty, tw, 38, 6);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = C.cyan;
+      ctx.font = 'bold 10px JetBrains Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(txt, tx, ty + 14);
+      ctx.fillStyle = C.label;
+      ctx.font = '10px JetBrains Mono, monospace';
+      ctx.fillText(txt2, tx, ty + 28);
+    }
+  }
+
+  function roundRect(ctx, x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.lineTo(x+w-r, y);
+    ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+    ctx.lineTo(x+w, y+h-r);
+    ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+    ctx.lineTo(x+r, y+h);
+    ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+    ctx.lineTo(x, y+r);
+    ctx.quadraticCurveTo(x, y, x+r, y);
+    ctx.closePath();
+  }
+
+  function animate(){
+    animPct += 0.022;
+    pulseT++;
+    if(animPct >= 1){ animPct = 1; draw(1); return; }
+    draw(animPct);
+    raf = requestAnimationFrame(animate);
+  }
+
+  function pulseLoop(){
+    if(hoveredIdx >= 0){ pulseT++; draw(1); }
+    requestAnimationFrame(pulseLoop);
+  }
+
+  // Hover detection
+  canvas.addEventListener('mousemove', e => {
+    if(animPct < 1) return;
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const my = (e.clientY - rect.top) * (canvas.height / rect.height);
+    let found = -1;
+    for(let i = 0; i < N; i++){
+      const val = skills[i].current / 100;
+      const p = point(i, R * val);
+      if(Math.hypot(mx - p.x, my - p.y) < 18){ found = i; break; }
+    }
+    if(found !== hoveredIdx){ hoveredIdx = found; draw(1); }
+  });
+  canvas.addEventListener('mouseleave', () => { hoveredIdx = -1; draw(1); });
+
+  // Mobile touch
+  canvas.addEventListener('touchstart', e => {
+    if(animPct < 1) return;
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches[0];
+    const mx = (t.clientX - rect.left) * (canvas.width / rect.width);
+    const my = (t.clientY - rect.top) * (canvas.height / rect.height);
+    for(let i = 0; i < N; i++){
+      const val = skills[i].current / 100;
+      const p = point(i, R * val);
+      if(Math.hypot(mx - p.x, my - p.y) < 24){ hoveredIdx = i; draw(1); return; }
+    }
+    hoveredIdx = -1; draw(1);
+  }, {passive:true});
+
+  const obs = new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting && animPct === 0){ animate(); pulseLoop(); obs.disconnect(); }
+  }, {threshold: 0.3});
+  obs.observe(canvas);
+
+  const themeObs = new MutationObserver(()=>{ if(animPct >= 1) draw(1); });
+  themeObs.observe(document.body, {attributes: true, attributeFilter: ['class']});
+})();
+
+
+
+/* ATTACK KILL CHAIN */
+(function(){
+  const steps = document.querySelectorAll('.kc-step');
+  if(!steps.length) return;
+  let current = -1;
+  function activateStep(n){
+    steps.forEach((s, i) => {
+      if(i < n) s.classList.add('done'), s.classList.remove('active');
+      else if(i === n) s.classList.add('active'), s.classList.remove('done');
+      else s.classList.remove('active','done');
+    });
+    current = n;
+  }
+  function runChain(){
+    let i = 0;
+    function next(){
+      if(i < steps.length){ activateStep(i++); setTimeout(next, 520); }
+    }
+    next();
+  }
+  // Click to jump
+  steps.forEach((s, i) => s.addEventListener('click', () => activateStep(i)));
+  // Auto-run on scroll
+  const obs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){ runChain(); obs.disconnect(); }
+  }, {threshold: 0.4});
+  const wrap = document.getElementById('killchain');
+  if(wrap) obs.observe(wrap);
+})();
+
+/* SKILLS TOOL ARSENAL GRID */
+(function(){
+  const grid = document.getElementById('hexGrid');
+  if(!grid) return;
+  const tools = [
+    {icon:'🕷️',name:'Burp Suite',cat:'web'},
+    {icon:'💉',name:'SQLMap',cat:'web'},
+    {icon:'📁',name:'Gobuster',cat:'web'},
+    {icon:'👻',name:'Nikto',cat:'web'},
+    {icon:'🔍',name:'Nmap',cat:'network'},
+    {icon:'🦈',name:'Wireshark',cat:'network'},
+    {icon:'⚡',name:'Scapy',cat:'network'},
+    {icon:'📡',name:'Aircrack-ng',cat:'network'},
+    {icon:'🎯',name:'Metasploit',cat:'exploit'},
+    {icon:'🔐',name:'Hashcat',cat:'exploit'},
+    {icon:'🔑',name:'Hydra',cat:'exploit'},
+    {icon:'🪲',name:'LinPEAS',cat:'exploit'},
+    {icon:'🐍',name:'Python',cat:'scripting'},
+    {icon:'💻',name:'Bash',cat:'scripting'},
+    {icon:'🐳',name:'Docker',cat:'scripting'},
+    {icon:'⚙️',name:'FastAPI',cat:'scripting'},
+    {icon:'🧅',name:'Tor',cat:'forensics'},
+    {icon:'📊',name:'Volatility',cat:'forensics'},
+    {icon:'🌐',name:'OSINT FW',cat:'forensics'},
+    {icon:'🔭',name:'Shodan',cat:'forensics'},
+  ];
+  tools.forEach((t, idx) => {
+    const el = document.createElement('div');
+    el.className = `tool-card cat-${t.cat}`;
+    el.style.transitionDelay = `${idx * 0.03}s`;
+    el.title = `${t.name} — ${t.cat}`;
+    el.innerHTML = `<span class="tool-card-icon">${t.icon}</span><span class="tool-card-name">${t.name}</span><span class="tool-card-cat">${t.cat}</span>`;
+    grid.appendChild(el);
+  });
+  // Trigger reveal on arsenal grid items after parent is visible
+  const arsenalObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.tool-card').forEach((c,i) => {
+          setTimeout(() => c.style.opacity = '1', i * 30);
+        });
+        arsenalObs.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.1});
+  arsenalObs.observe(grid);
+})();
+
+/* CTF ACTIVITY HEATMAP */
+(function(){
+  const gridEl = document.getElementById('heatmapGrid');
+  const totalEl = document.getElementById('heatmapTotal');
+  const monthsEl = document.getElementById('heatmapMonths');
+  if(!gridEl) return;
+
+  // Generate 52 weeks of data from Aug 2024
+  const weeks = 52;
+  const days = 7;
+  const start = new Date('2024-08-05'); // Start on Monday
+  const data = [];
+  let total = 0;
+
+  // Seeded pseudo-random for consistent heatmap
+  function seeded(seed){
+    let x = Math.sin(seed + 1) * 10000;
+    return x - Math.floor(x);
+  }
+
+  for(let w = 0; w < weeks; w++){
+    const col = [];
+    for(let d = 0; d < days; d++){
+      const dayIdx = w * days + d;
+      const date = new Date(start);
+      date.setDate(start.getDate() + dayIdx);
+      if(date > new Date()) { col.push({val:0,date}); continue; }
+      // More activity on weekdays, peaks around CTF periods
+      const base = seeded(dayIdx * 7 + 3);
+      const weekdayBoost = d < 5 ? 1.4 : 0.8;
+      const val = Math.floor(base * base * 5 * weekdayBoost);
+      total += val;
+      col.push({val, date});
+    }
+    data.push(col);
+  }
+
+  totalEl.textContent = `${total.toLocaleString()} hacking events in the past year`;
+
+  function cellColor(v){
+    if(v === 0) return 'var(--card)';
+    if(v === 1) return 'rgba(0,229,255,.2)';
+    if(v === 2) return 'rgba(0,229,255,.4)';
+    if(v === 3) return 'rgba(0,229,255,.65)';
+    return 'var(--cyan)';
+  }
+
+  const monthLabels = {};
+  data.forEach((col, w) => {
+    const colEl = document.createElement('div');
+    colEl.className = 'heatmap-col';
+    col.forEach(({val, date}) => {
+      const cell = document.createElement('div');
+      cell.className = 'heatmap-cell';
+      cell.style.background = cellColor(val);
+      const ds = date.toDateString();
+      cell.title = `${ds}: ${val} event${val !== 1 ? 's' : ''}`;
+      colEl.appendChild(cell);
+      const mo = date.getMonth();
+      if(date.getDate() <= 7 && !monthLabels[mo]) monthLabels[mo] = w;
+    });
+    gridEl.appendChild(colEl);
+  });
+
+  // Month labels
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const totalCols = data.length;
+  let lastW = 0;
+  Object.entries(monthLabels).sort((a,b)=>a[1]-b[1]).forEach(([mo, w]) => {
+    const span = document.createElement('span');
+    span.className = 'hm-month-label';
+    span.textContent = months[mo];
+    span.style.marginLeft = `${(w - lastW) * 16}px`;
+    lastW = w;
+    monthsEl.appendChild(span);
+  });
+
+  // Hacker mode color update
+  const obs = new MutationObserver(() => {
+    const isHacker = document.body.classList.contains('hacker-mode');
+    gridEl.querySelectorAll('.heatmap-cell').forEach(cell => {
+      const t = cell.title;
+      const val = parseInt(t.match(/: (\d+)/)?.[1] || '0');
+      if(isHacker){
+        const colors = ['var(--card)','rgba(0,255,65,.2)','rgba(0,255,65,.4)','rgba(0,255,65,.65)','#00FF41'];
+        cell.style.background = colors[Math.min(val, 4)];
+      } else {
+        cell.style.background = cellColor(val);
+      }
+    });
+  });
+  obs.observe(document.body, {attributes:true, attributeFilter:['class']});
 })();
 
 /* ANALYTICS EVENT TRACKING */
