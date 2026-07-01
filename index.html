@@ -471,6 +471,7 @@ section{padding:6rem 5%}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem}
 .contact-split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem;align-items:start}
 @media(max-width:860px){.contact-split{grid-template-columns:1fr}}
+@media(max-width:520px){.cf-name-email-grid{grid-template-columns:1fr!important}}
 .contact-form-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden}
 .contact-form-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple-light));opacity:.7}
 .contact-form-title{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.14em;margin-bottom:1.3rem}
@@ -491,6 +492,9 @@ section{padding:6rem 5%}
 .hacker-mode .form-input:focus,.hacker-mode .form-textarea:focus{border-color:#00FF41;box-shadow:0 0 0 3px rgba(0,255,65,.08)}
 .hacker-mode .form-submit{background:linear-gradient(135deg,#00FF41,#00CC33);color:#000}
 .contact-links-wrap{display:flex;flex-direction:column;gap:.75rem}
+.contact-strip{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.8rem}
+.contact-strip .contact-link{flex:1;min-width:160px;max-width:220px}
+@media(max-width:600px){.contact-strip .contact-link{min-width:140px}}
 .contact-link{display:flex;align-items:center;gap:.8rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.3rem;text-decoration:none;color:var(--text);font-family:var(--font-mono);transition:all .25s;position:relative;overflow:hidden}
 .contact-link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.04),transparent);opacity:0;transition:opacity .25s}
 .contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);box-shadow:0 0 20px rgba(0,229,255,.15),0 8px 24px rgba(0,0,0,.3)}
@@ -1374,11 +1378,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
       </div>
     </div>
     <p class="contact-desc">Open to internships, security assessments, CTF collaborations, and open-source contributions. Reach out for anything in the offensive security or threat landscape space.</p>
-    <div class="contact-split">
-      <!-- CONTACT FORM -->
-      <div class="contact-form-wrap reveal">
-        <div class="contact-form-title">// Send a Message</div>
-        <form id="contact-form" action="https://formspree.io/f/xkolqjlg" method="POST">
+
+    <!-- CONTACT FORM — full width -->
+    <div class="contact-form-wrap reveal" style="max-width:600px;margin:2rem auto 0">
+      <div class="contact-form-title">// Send a Message</div>
+      <form id="contact-form" action="https://formspree.io/f/xkolqjlg" method="POST">
+        <div class="cf-name-email-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
           <div class="form-group">
             <label class="form-label" for="cf-name">Name</label>
             <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name">
@@ -1387,28 +1392,28 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
             <label class="form-label" for="cf-email">Email</label>
             <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email">
           </div>
-          <div class="form-group">
-            <label class="form-label" for="cf-subject">Subject</label>
-            <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Internship · Collab · Hire · CTF">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="cf-msg">Message</label>
-            <textarea class="form-textarea" id="cf-msg" name="message" placeholder="What's on your mind?" required></textarea>
-          </div>
-          <button class="form-submit" type="submit" id="cf-submit">⚡ Send Message</button>
-          <div class="form-msg" id="cf-msg-status"></div>
-        </form>
-      </div>
-      <!-- CONTACT LINKS -->
-      <div class="contact-links-wrap">
-        <div class="contact-grid" style="grid-template-columns:1fr;gap:.75rem">
-          <a href="mailto:rajendrajra65@gmail.com" class="contact-link" data-copy="rajendrajra65@gmail.com"><span class="contact-icon">✉️</span><div><span class="contact-label">Email — click to copy</span><span class="contact-val">rajendrajra65@gmail.com</span></div></a>
-          <a href="tel:+918302678483" class="contact-link" data-copy="+918302678483"><span class="contact-icon">📞</span><div><span class="contact-label">Phone — click to copy</span><span class="contact-val">+91 83026 78483</span></div></a>
-          <a href="https://linkedin.com/in/rajendra-singh01" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">💼</span><div><span class="contact-label">LinkedIn</span><span class="contact-val">rajendra-singh01</span></div></a>
-          <a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">🐙</span><div><span class="contact-label">GitHub</span><span class="contact-val">Raj7l69</span></div></a>
-          <a href="https://tryhackme.com/p/Ra.oneX" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">⚔️</span><div><span class="contact-label">TryHackMe</span><span class="contact-val">Ra.oneX · Top 4%</span></div></a>
         </div>
-      </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-subject">Subject</label>
+          <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Internship · Collab · Hire · CTF">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-msg">Message</label>
+          <textarea class="form-textarea" id="cf-msg" name="message" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="form-submit" type="submit" id="cf-submit">⚡ Send Message</button>
+        <div class="form-msg" id="cf-msg-status"></div>
+      </form>
+    </div>
+
+    <!-- CONTACT LINKS — compact strip -->
+    <div class="contact-strip reveal">
+      <a href="mailto:rajendrajra65@gmail.com" class="contact-link" data-copy="rajendrajra65@gmail.com"><span class="contact-icon">✉️</span><div><span class="contact-label">Email</span><span class="contact-val">rajendrajra65@gmail.com</span></div></a>
+      <a href="tel:+918302678483" class="contact-link" data-copy="+918302678483"><span class="contact-icon">📞</span><div><span class="contact-label">Phone</span><span class="contact-val">+91 83026 78483</span></div></a>
+      <a href="https://linkedin.com/in/rajendra-singh01" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">💼</span><div><span class="contact-label">LinkedIn</span><span class="contact-val">rajendra-singh01</span></div></a>
+      <a href="https://github.com/Raj7l69" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">🐙</span><div><span class="contact-label">GitHub</span><span class="contact-val">Raj7l69</span></div></a>
+      <a href="https://tryhackme.com/p/Ra.oneX" target="_blank" rel="noopener" class="contact-link"><span class="contact-icon">⚔️</span><div><span class="contact-label">TryHackMe</span><span class="contact-val">Ra.oneX · Top 4%</span></div></a>
     </div>
   </div>
 </section>
@@ -1599,13 +1604,13 @@ document.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',window.
 
 /* KEYBOARD SHORTCUT - / to focus terminal */
 document.addEventListener('keydown',e=>{
-  if(e.key==='/'&&document.activeElement!==document.getElementById('termInput')){
+  if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&document.activeElement!==document.getElementById('termInput')){
     e.preventDefault();
     document.getElementById('terminal-section').scrollIntoView({behavior:'smooth'});
     setTimeout(()=>document.getElementById('termInput').focus(),600);
   }
   // H key toggles hacker mode
-  if(e.key==='h'&&document.activeElement!==document.getElementById('termInput')&&document.activeElement!==document.getElementById('cmd-input')){
+  if(e.key==='h'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&document.activeElement!==document.getElementById('termInput')&&document.activeElement!==document.getElementById('cmd-input')){
     toggleHacker();
   }
 });
@@ -2199,6 +2204,66 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
       });
     });
   });
+})();
+
+/* ANALYTICS EVENT TRACKING */
+(function(){
+  function track(name, params){ if(typeof gtag!=='undefined') gtag('event', name, params); }
+
+  // Case study opens
+  document.querySelectorAll('.case-study-btn').forEach(btn=>{
+    btn.addEventListener('click',()=> track('case_study_open',{project: btn.dataset.case}));
+  });
+
+  // Cert / LOR views
+  document.querySelectorAll('.lor-clickable').forEach(btn=>{
+    btn.addEventListener('click',()=> track('document_view',{doc: btn.dataset.lor}));
+  });
+  document.querySelectorAll('.cert-view-btn').forEach(btn=>{
+    btn.addEventListener('click',()=> track('document_view',{doc: btn.dataset.cert||btn.dataset.lor}));
+  });
+
+  // Project filter tabs
+  document.querySelectorAll('.pf-btn').forEach(btn=>{
+    btn.addEventListener('click',()=> track('project_filter',{filter: btn.dataset.filter}));
+  });
+
+  // Hacker mode toggle
+  document.getElementById('hackerToggle')?.addEventListener('click',()=>{
+    track('hacker_mode_toggle',{state: document.body.classList.contains('hacker-mode')?'on':'off'});
+  });
+
+  // Section scroll into view
+  const sections = ['hero','skills','experience','projects','ctf','contact'];
+  const sectionObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) track('section_view',{section: e.target.id}); });
+  },{threshold:0.3});
+  sections.forEach(id=>{ const el=document.getElementById(id); if(el) sectionObs.observe(el); });
+
+  // Skill bar cross-link clicks
+  document.querySelectorAll('.skill-bar-row[data-skill]').forEach(row=>{
+    row.addEventListener('click',()=> track('skill_crosslink_click',{skill: row.dataset.skill}));
+  });
+
+  // GitHub links
+  document.querySelectorAll('a[href*="github.com"]').forEach(a=>{
+    a.addEventListener('click',()=> track('github_link_click',{url: a.href}));
+  });
+
+  // LinkedIn click
+  document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>{
+    a.addEventListener('click',()=> track('linkedin_click',{}));
+  });
+
+  // Terminal commands typed
+  const termInput = document.getElementById('terminal-input');
+  if(termInput){
+    termInput.addEventListener('keydown', e=>{
+      if(e.key==='Enter' && termInput.value.trim()){
+        track('terminal_command',{command: termInput.value.trim()});
+      }
+    });
+  }
 })();
 
 /* CONTACT FORM — Formspree AJAX */
