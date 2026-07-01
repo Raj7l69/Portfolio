@@ -492,10 +492,9 @@ section{padding:6rem 5%}
 .hacker-mode .form-input:focus,.hacker-mode .form-textarea:focus{border-color:#00FF41;box-shadow:0 0 0 3px rgba(0,255,65,.08)}
 .hacker-mode .form-submit{background:linear-gradient(135deg,#00FF41,#00CC33);color:#000}
 .contact-links-wrap{display:flex;flex-direction:column;gap:.75rem}
-.contact-strip{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:1.8rem}
-.contact-strip .contact-link{flex:1;min-width:160px;max-width:220px}
-@media(max-width:600px){.contact-strip .contact-link{min-width:140px}}
-.contact-link{display:flex;align-items:center;gap:.8rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.3rem;text-decoration:none;color:var(--text);font-family:var(--font-mono);transition:all .25s;position:relative;overflow:hidden}
+.contact-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+@media(max-width:500px){.contact-strip{grid-template-columns:1fr 1fr}}
+.contact-link{display:flex;align-items:center;gap:.9rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;color:var(--text);font-family:var(--font-mono);transition:all .25s;position:relative;overflow:hidden}
 .contact-link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,229,255,.04),transparent);opacity:0;transition:opacity .25s}
 .contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);box-shadow:0 0 20px rgba(0,229,255,.15),0 8px 24px rgba(0,0,0,.3)}
 .contact-link:active{transform:translateY(0) scale(.97);box-shadow:0 0 30px rgba(0,229,255,.25)}
